@@ -2,12 +2,12 @@ import { createBrowserRouter } from 'react-router-dom'
 import Layout from '../pages/layout/Layout';
 import Main from '../pages/main/Main';
 import Help from '../pages/help/Help';
-import Live from '../pages/live/live';
-import MyPage from '../pages/myPage/myPage';
-import Payment from '../pages/payment/payment';
-import Search from '../pages/search/search';
-import SignIn from '../pages/signIn/signIn';
-import SignUp from '../pages/signUp/signUp';
+import Live from '../pages/live/Live';
+import MyPage from '../pages/myPage/MyPage';
+import Payment from '../pages/payment/Payment';
+import Search from '../pages/search/Search';
+import SignIn from '../pages/signIn/SignIn';
+import SignUp from '../pages/signUp/SignUp';
 import VideoUpload from '../pages/videoUpload/VideoUpload';
 
 const router = createBrowserRouter([

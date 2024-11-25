@@ -2,74 +2,35 @@ import styled from 'styled-components';
 
 const S = {}
 
-  S.Background = styled.div`
-    width: 100%;
-    height: 100dvh;
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  `
+S.BackGround = styled.div`
+  background-color: #1A1B1E;
+`
 
-  S.Wrapper = styled.div`
-    width: 430px;
-    height: 100%;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    padding : 0 30px;
-  `
+S.Header = styled.header`
+  height: 80px;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
-  S.Header = styled.header`
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
+S.Wrapper = styled.div`
+  display: flex;
+`
 
-    & a {
-      font-size: 24px;
-      font-weight: 600;
-      display: block;
-    }
-  `
+S.Main = styled.main`
+  width: 1669px;
+`
 
-  S.Nav = styled.nav`
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+S.Nav = styled.nav`
+  width: 259px;
+  height: 1580px;
+  border: 1px solid #fff;
+`
 
-    & a {
-      font-size: 16px;
-      text-align: center;
-
-      & p {
-        color : #bec4c9;
-      }
-
-      .icon {
-        font-size : 24px;
-        padding : 4px;
-        path {
-          color : #bec4c9;
-        }
-      }
-    }
-
-    & .active {
-      & p {
-        color : #917cf0 !important;
-      }
-
-      & path {
-        color : #917cf0 !important;
-      }
-    }
-  `
-
-  S.Main = styled.main`
-    flex: 1;
-  `
+S.Footer = styled.footer`
+  height: 292px;
+  background-color: #F2F2F2;
+`
 
 export default S;

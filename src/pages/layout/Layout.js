@@ -1,46 +1,25 @@
-import React from 'react';
-import { Link, NavLink, Outlet } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faCreditCard, faHouse, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
-import S from './style';
+import React from "react";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import S from "./style";
+import Logo from "./_component/Logo/Logo";
+import SearchBar from "./_component/SearchBar/SearchBar";
 
 const Layout = () => {
   return (
-    <S.Background>
+    <S.BackGround>
+      <S.Header> 
+        <Logo />
+        <SearchBar />
+      </S.Header>
+
       <S.Wrapper>
+        <S.Nav> 네브 </S.Nav>
 
-        <S.Header>
-          <Link to={"/todo"}>Header</Link>
-        </S.Header>
-
-        <S.Main className='main'>
-          <Outlet />
-        </S.Main>
-
-        <S.Nav>
-          <NavLink to={"/"}>
-            <FontAwesomeIcon icon={faHouse} className='icon' />
-            <p>피드</p>
-          </NavLink>
-          <NavLink to={"/search"}>
-            <FontAwesomeIcon icon={faSearch} className='icon' />
-            <p>검색</p>
-          </NavLink>
-          <NavLink to={"/notice"}>
-            <FontAwesomeIcon icon={faBell} className='icon' />
-            <p>알림</p>
-          </NavLink>
-          <NavLink to={"/payment"}>
-            <FontAwesomeIcon icon={faCreditCard} className='icon' />
-            <p>결제</p>
-          </NavLink>
-          <NavLink to={"/my"}>
-            <FontAwesomeIcon icon={faUser} className='icon' />
-            <p>My</p>
-          </NavLink>
-        </S.Nav>
+        <S.Main> 메인 </S.Main>
       </S.Wrapper>
-    </S.Background>
+
+      <S.Footer> 푸터 </S.Footer>
+    </S.BackGround>
   );
 };
 
