@@ -51,6 +51,10 @@ const router = createBrowserRouter([
         path : '/videoupload',
         element : <VideoUpload />
       },
+      {
+        path : '/components',
+        element : <VideoUpload />
+      },
     ]
   }
 ],

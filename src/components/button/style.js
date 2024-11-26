@@ -9,6 +9,9 @@ const variantCSS = {
   `,
   white : css`
     background-color: ${({theme}) => theme.PALLETE.primary["white"]};
+  `,
+  live : css`
+     background-color: ${({theme}) => theme.PALLETE.primary["live"]};
   `
 };
 
@@ -27,7 +30,10 @@ const borderCSS = {
   `,
   gray300 : css`
     border: solid 1px ${({theme}) => theme.PALLETE.gray["300"] };
-  `
+  `,
+    none : css`
+     border: 0px;
+    `,
 };
 
 const colorCSS = {
@@ -74,7 +80,7 @@ const sizeCSS = {
   small : css`
     width: 64px;
     height: 32px;
-    padding: 16px 0;
+    padding: 8px 0;
   `,
   medium : css`
     width: 96px;

@@ -2,8 +2,9 @@ const theme = {};
 
 theme.PALLETE = {
   primary: {
-    main: "#ffd159",
+    main: "#3D6AFF",
     sub: "#fff4d8",
+    live: "#CA2626"
   },
   secondary: "#f1ebf5",
   white: "#fff",

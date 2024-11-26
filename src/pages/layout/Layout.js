@@ -3,6 +3,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import S from "./style";
 import Logo from "./_component/Logo/Logo";
 import SearchBar from "./_component/SearchBar/SearchBar";
+import UserStatus from "./_component/UserStatus/UserStatus";
 
 const Layout = () => {
   return (
@@ -10,12 +11,15 @@ const Layout = () => {
       <S.Header> 
         <Logo />
         <SearchBar />
+        <UserStatus />
       </S.Header>
 
       <S.Wrapper>
         <S.Nav> 네브 </S.Nav>
 
-        <S.Main> 메인 </S.Main>
+        <S.Main> 
+          <Outlet/>  
+        </S.Main>
       </S.Wrapper>
 
       <S.Footer> 푸터 </S.Footer>
