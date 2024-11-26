@@ -9,7 +9,7 @@ const BasicInput = ({ state, isDisabled, errorText, susccessText, placeHolderTex
             <S.Input
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
-                isFocused={isFocused}
+                $isFocused={isFocused}
                 state={state} // 상태 전달
                 placeholder={placeHolderText}
                 disabled = {isDisabled}

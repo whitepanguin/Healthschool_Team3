@@ -12,9 +12,9 @@ S.Input = styled.input`
   width: 420px;
   height: 140px;
   border: 2px solid
-    ${({ isFocused, theme }) => (isFocused ? "#333333" : "#8D8D8D")};
-  background-color: ${({ isFocused, theme }) =>
-    isFocused ? "#FFFFFF" : "#D9D9D9"};
+    ${({ $isFocused  }) => ($isFocused ? "#333333" : "#8D8D8D")};
+  background-color: ${({ $isFocused  }) =>
+    $isFocused ? "#FFFFFF" : "#D9D9D9"};
   border-radius: 5px;
   padding: 0 10px;
   font-size: 16px;

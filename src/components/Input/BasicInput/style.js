@@ -12,20 +12,20 @@ S.Input = styled.input`
   width: 220px;
   height: 42px;
   border: 2px solid
-    ${({ isFocused, state }) =>
+    ${({  $isFocused, state }) =>
       state === "error"
         ? "#FF0000" // 오류 상태
         : state === "success"
         ? "#00FF00" // 성공 상태
-        : isFocused
+        :  $isFocused
         ? "#333333" // 포커스 상태
         : "#8D8D8D"}; // 기본 상태
-  background-color: ${({ isFocused, state }) =>
+  background-color: ${({  $isFocused, state }) =>
     state === "error"
       ? "#FFECEC" // 오류 배경
       : state === "success"
       ? "#ECFFEC" // 성공 배경
-      : isFocused
+      :  $isFocused
       ? "#FFFFFF" // 포커스 배경
       : "#D9D9D9"}; // 기본 배경
   border-radius: 5px;

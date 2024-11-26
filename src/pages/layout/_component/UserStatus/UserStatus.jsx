@@ -18,24 +18,28 @@ const UserStatus = () => {
                     <p>홍길동 회원님</p>
                 </S.UserName>
             )}
-            <S.ImagesWrapper>
-                <S.Images
-                    src={process.env.PUBLIC_URL + `/images/main/${alarm.length === 0 ? ('bell_w.png') : ('bellOn_w.png')}`}
-                    alt="logo"
-                />
-            </S.ImagesWrapper>
+            <Link>
+                <S.ImagesWrapper>
+                    <S.Images
+                        src={process.env.PUBLIC_URL + `/images/main/${alarm.length === 0 ? ('bell_w.png') : ('bellOn_w.png')}`}
+                        alt="logo"
+                    />
+                </S.ImagesWrapper>
+            </Link>
             {isInstructor && userStatus === '로그인' && (
                 <>
                     <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>영상업로드</BasicButton>
                     <BasicButton size={'medium'} shape={'small'} variant={'live'} color={'white'}>라이브 온</BasicButton>
                 </>
             )}
-            <S.ImagesWrapper>
-                <S.Images
-                    src={process.env.PUBLIC_URL + "/images/main/questionAnswer_w.png"}
-                    alt="logo"
-                />
-            </S.ImagesWrapper>
+            <Link>
+                <S.ImagesWrapper>
+                    <S.Images
+                        src={process.env.PUBLIC_URL + "/images/main/questionAnswer_w.png"}
+                        alt="logo"
+                    />
+                </S.ImagesWrapper>
+            </Link>
             {userStatus === '로그인전' ? (
                 <>
                     <BasicButton size={'small'} shape={'small'} variant={'primary'} color={'white'}>로그인</BasicButton>

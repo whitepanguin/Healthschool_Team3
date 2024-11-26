@@ -9,7 +9,7 @@ const InputBox = ({ placeHolderText }) => {
             <S.Input
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
-                isFocused={isFocused}
+                $isFocused ={isFocused}
                 placeholder={placeHolderText}
             />
         </S.InputWrapper>

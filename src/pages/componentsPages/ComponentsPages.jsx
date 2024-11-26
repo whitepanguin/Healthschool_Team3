@@ -3,6 +3,9 @@ import BasicButton from '../../components/button/BasicButton';
 import S from './style';
 import InputBox from '../../components/Input/InputBox/InputBox';
 import BasicInput from '../../components/Input/BasicInput/BasicInput';
+import BasicTag from '../../components/tag/BasicTag';
+import BasicCheckBox from '../../components/checkbox/BasicCheckBox';
+import BasicRadio from '../../components/radio/BasicRadio';
 
 const ComponentsPages = () => {
     const [inputState, setInputState] = useState('');
@@ -14,6 +17,14 @@ const ComponentsPages = () => {
             if (prevState === 'error') return 'success';
             return ''; // 'success' 상태일 때 다시 초기 상태로
         });
+    };
+    // 체크박스
+    const [isChecked, setIsChecked] = useState(false);
+    // 라디오
+    const [selectedValue, setSelectedValue] = useState('option1');
+    // 라디오
+    const handleRadioChange = (e) => {
+        setSelectedValue(e.target.value);
     };
 
     return (
@@ -33,12 +44,73 @@ const ComponentsPages = () => {
             </S.Wrapper>
             <S.Wrapper>
                 <h2>댓글 Input Box</h2>
-                <InputBox placeHolderText={'입력하세욧...'}/>
+                <InputBox placeHolderText={'입력하세욧...'} />
             </S.Wrapper>
             <S.Wrapper>
                 <h2>Input</h2>
-                <BasicInput state={inputState} isDisabled={false} errorText={'비밀번호는 영문 대/소문자, 특수문자...'} susccessText={'아주 좋습니다!!'} placeHolderText={'입력하세요...'}/>
+                <BasicInput state={inputState} isDisabled={false} errorText={'비밀번호는 영문 대/소문자, 특수문자...'} susccessText={'아주 좋습니다!!'} placeHolderText={'입력하세요...'} />
                 <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'} onClick={toggleInputState}>상태변경</BasicButton>
+            </S.Wrapper>
+            <S.Wrapper>
+                <h2>Tag</h2>
+                <BasicTag tag={100}>태그</BasicTag>
+                <BasicTag tag={200}>태그</BasicTag>
+                <BasicTag tag={300}>태그</BasicTag>
+                <BasicTag tag={400}>태그</BasicTag>
+                <BasicTag tag={500}>태그</BasicTag>
+                <BasicTag tag={600}>태그</BasicTag>
+            </S.Wrapper>
+            <S.Wrapper>
+                <h2>Checkbox</h2>
+                <BasicCheckBox
+                    label="Normal"
+                    checked={isChecked}
+                    onChange={(e) => setIsChecked(e.target.checked)}
+                />
+
+                <BasicCheckBox
+                    label="Hover"
+                    checked={false}
+                    onChange={() => { }}
+                />
+
+                <BasicCheckBox
+                    label="Selected"
+                    checked={true}
+                    onChange={() => { }}
+                />
+
+                <BasicCheckBox
+                    label="Disabled"
+                    checked={false}
+                    onChange={() => { }}
+                    disabled={true}
+                />
+            </S.Wrapper>
+            <S.Wrapper>
+                <h2>Radio</h2>
+                <BasicRadio
+                    label="Option 1"
+                    checked={selectedValue === 'option1'}
+                    onChange={handleRadioChange}
+                    value="option1"
+                />
+                <BasicRadio
+                    label="Option 2"
+                    checked={selectedValue === 'option2'}
+                    onChange={handleRadioChange}
+                    value="option2"
+                />
+                <BasicRadio
+                    label="Option 3"
+                    checked={selectedValue === 'option3'}
+                    onChange={handleRadioChange}
+                    value="option3"
+                    disabled={true}
+                />
+            </S.Wrapper>
+            <S.Wrapper>
+                <h2>Switch</h2>
             </S.Wrapper>
         </div>
     );
