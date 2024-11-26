@@ -7,8 +7,8 @@ const variantCSS = {
   sub : css`
     background-color: ${({theme}) => theme.PALLETE.primary["sub"]};
   `,
-  white : css`
-    background-color: ${({theme}) => theme.PALLETE.primary["white"]};
+  default : css`
+    background-color: ${({theme}) => theme.PALLETE.primary["default"]};
   `,
   live : css`
      background-color: ${({theme}) => theme.PALLETE.primary["live"]};
@@ -31,9 +31,9 @@ const borderCSS = {
   gray300 : css`
     border: solid 1px ${({theme}) => theme.PALLETE.gray["300"] };
   `,
-    none : css`
-     border: 0px;
-    `,
+  none : css`
+    border: 0px;
+  `,
 };
 
 const colorCSS = {
@@ -78,24 +78,24 @@ const shapeCSS = {
 
 const sizeCSS = {
   small : css`
-    width: 64px;
-    height: 32px;
+    width: 55px;
+    height: 31px;
     padding: 8px 0;
   `,
   medium : css`
-    width: 96px;
-    height: 48px;
-    padding: 16px 0;
+    width: 126px;
+    height: 38px;
+    padding: 10px 0;
   `,
   large : css`
-    width: 128px;
-    height: 64px;
-    padding: 16px 0;
+    width: 197px;
+    height: 53px;
+    padding: 14px 0;
   `,
   full : css`
     width: 100%;
     aspect-ratio: 8 / 1;
-    padding: 16px 0;
+    padding: 20px 0;
   `,
 }
 

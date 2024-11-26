@@ -4,6 +4,7 @@ import S from "./style";
 import Logo from "./_component/Logo/Logo";
 import SearchBar from "./_component/SearchBar/SearchBar";
 import UserStatus from "./_component/UserStatus/UserStatus";
+import NavBar from "./_component/NavBar/NavBar";
 
 const Layout = () => {
   return (
@@ -15,7 +16,9 @@ const Layout = () => {
       </S.Header>
 
       <S.Wrapper>
-        <S.Nav> 네브 </S.Nav>
+        <S.Nav>
+          <NavBar/>
+        </S.Nav>
 
         <S.Main> 
           <Outlet/>  

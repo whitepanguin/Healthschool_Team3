@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.05);
     letter-spacing: -0.4px;
     text-decoration: none;
-    color: #131313;
+    color: #fff;
     font-family: 'Pretendard-Regular' !important;
   }
 

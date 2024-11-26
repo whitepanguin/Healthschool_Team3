@@ -9,6 +9,7 @@ import Search from '../pages/search/Search';
 import SignIn from '../pages/signIn/SignIn';
 import SignUp from '../pages/signUp/SignUp';
 import VideoUpload from '../pages/videoUpload/VideoUpload';
+import ComponentsPages from '../pages/componentsPages/ComponentsPages';
 
 const router = createBrowserRouter([
   {
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path : '/components',
-        element : <VideoUpload />
+        element : <ComponentsPages />
       },
     ]
   }

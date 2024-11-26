@@ -24,10 +24,10 @@ const UserStatus = () => {
                     alt="logo"
                 />
             </S.ImagesWrapper>
-            {isInstructor & userStatus === '로그인' && (
+            {isInstructor && userStatus === '로그인' && (
                 <>
-                    <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'} border={'none'}>영상업로드</BasicButton>
-                    <BasicButton size={'medium'} shape={'small'} variant={'live'} color={'white'} border={'none'}>영상업로드</BasicButton>
+                    <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>영상업로드</BasicButton>
+                    <BasicButton size={'medium'} shape={'small'} variant={'live'} color={'white'}>라이브 온</BasicButton>
                 </>
             )}
             <S.ImagesWrapper>
@@ -38,11 +38,11 @@ const UserStatus = () => {
             </S.ImagesWrapper>
             {userStatus === '로그인전' ? (
                 <>
-                    <BasicButton size={'small'} shape={'small'} variant={'primary'} color={'white'} border={'none'}>로그인</BasicButton>
+                    <BasicButton size={'small'} shape={'small'} variant={'primary'} color={'white'}>로그인</BasicButton>
                 </>
             ) : (
                 <>
-                    <BasicButton size={'small'} shape={'small'} variant={'primary'} color={'white'} border={'none'}>로그아웃</BasicButton>
+                    <BasicButton size={'small'} shape={'small'} variant={'primary'} color={'white'}>로그아웃</BasicButton>
                 </>
             )}
         </S.Wrapper>

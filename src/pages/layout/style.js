@@ -1,4 +1,5 @@
 import styled from "styled-components";
+//layout
 
 const S = {};
 
@@ -17,15 +18,16 @@ S.Header = styled.header`
 
 S.Wrapper = styled.div`
   display: flex;
+  margin-bottom: 100px;
 `;
 
 S.Main = styled.main`
   width: 1669px;
+  padding: 60px 60px;
 `;
 
 S.Nav = styled.nav`
   width: 259px;
-  height: 1580px;
   border: 1px solid #fff;
 `;
 

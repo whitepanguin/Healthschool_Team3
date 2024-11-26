@@ -3,11 +3,13 @@ const theme = {};
 theme.PALLETE = {
   primary: {
     main: "#3D6AFF",
-    sub: "#fff4d8",
+    sub: "#E4E5E7",
+    default: "#1A1B1E",
     live: "#CA2626"
   },
   secondary: "#f1ebf5",
   white: "#fff",
+  black: "#000",
   gray: {
     100: "#F1EBF5",
     200: "#AEA8B2",
