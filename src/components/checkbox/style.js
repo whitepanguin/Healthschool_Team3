@@ -12,9 +12,9 @@ S.CheckBox = styled.input.attrs({ type: 'checkbox' })`
     appearance: none;
     width: 20px;
     height: 20px;
-    border: 2px solid #ccc;
+    border: 2px solid ${({ theme }) => theme.PALLETE.black};
     border-radius: 3px;
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.PALLETE.white};
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -22,30 +22,30 @@ S.CheckBox = styled.input.attrs({ type: 'checkbox' })`
     transition: all 0.2s ease;
 
     &:not(:checked) {
-        background-color: #fff;
-        border-color: #ccc;
+        background-color: ${({ theme }) => theme.PALLETE.white};
+        border-color: ${({ theme }) => theme.PALLETE.black};
     }
 
     &:not(:checked):hover {
-        border-color: #0056b3;
+        border-color: ${({ theme }) => theme.PALLETE.primary["main"]};
     }
 
     &:checked {
-        border-color: #007bff;
-        background-color: #007bff;
-        color: #fff;
+        border-color: ${({ theme }) => theme.PALLETE.primary["main"]};
+        background-color: ${({ theme }) => theme.PALLETE.primary["main"]};
+        color: ${({ theme }) => theme.PALLETE.white};
     }
 
     &:disabled {
-        background-color: #f0f0f0;
-        border-color: #d0d0d0;
+        background-color: ${({ theme }) => theme.PALLETE.gray["100"]};
+        border-color: ${({ theme }) => theme.PALLETE.gray["500"]};
         cursor: not-allowed;
     }
 
     &:checked::after {
         content: '✔';
         font-size: 14px;
-        color: #fff;
+        color: ${({ theme }) => theme.PALLETE.white};
     }
 `;
 

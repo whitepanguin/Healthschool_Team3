@@ -6,6 +6,7 @@ import BasicInput from '../../components/Input/BasicInput/BasicInput';
 import BasicTag from '../../components/tag/BasicTag';
 import BasicCheckBox from '../../components/checkbox/BasicCheckBox';
 import BasicRadio from '../../components/radio/BasicRadio';
+import BasicSwitch from '../../components/switch/BasicSwitch';
 
 const ComponentsPages = () => {
     const [inputState, setInputState] = useState('');
@@ -111,6 +112,8 @@ const ComponentsPages = () => {
             </S.Wrapper>
             <S.Wrapper>
                 <h2>Switch</h2>
+                <BasicSwitch />
+                <BasicSwitch isDisabled={true}/>
             </S.Wrapper>
         </div>
     );
