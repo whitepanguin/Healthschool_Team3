@@ -7,6 +7,7 @@ import BasicTag from '../../components/tag/BasicTag';
 import BasicCheckBox from '../../components/checkbox/BasicCheckBox';
 import BasicRadio from '../../components/radio/BasicRadio';
 import BasicSwitch from '../../components/switch/BasicSwitch';
+import Modal from '../../components/modal/Modal';
 
 const ComponentsPages = () => {
     const [inputState, setInputState] = useState('');
@@ -27,6 +28,17 @@ const ComponentsPages = () => {
     const handleRadioChange = (e) => {
         setSelectedValue(e.target.value);
     };
+    //모달
+    const [activeModal, setActiveModal] = useState();
+
+    const openModal = (modalType) => {
+        setActiveModal(modalType);
+    };
+
+    const closeModal = () => {
+        setActiveModal(null);
+    };
+
 
     return (
         <div>
@@ -113,7 +125,47 @@ const ComponentsPages = () => {
             <S.Wrapper>
                 <h2>Switch</h2>
                 <BasicSwitch />
-                <BasicSwitch isDisabled={true}/>
+                <BasicSwitch isDisabled={true} />
+            </S.Wrapper>
+            <S.Wrapper>
+                <h2>Modal</h2>
+                <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'} onClick={()=> openModal('modal1')}>Open Modal 1</BasicButton>
+                <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'} onClick={()=> openModal('modal2')}>Open Modal 2</BasicButton>
+                <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'} onClick={()=> openModal('modal3')}>Open Modal 3</BasicButton>
+
+                {activeModal === 'modal1' && (
+                    <Modal
+                        title="Select plan"
+                        description="Simple and flexible per-user pricing"
+                        confirmText="확인"
+                        cancelText="취소"
+                        onCancel={closeModal}
+                        onConfirm={() => {
+                            closeModal();
+                        }}
+                    />
+                )}
+
+                {activeModal === 'modal2' && (
+                    <Modal
+                        icon="⚠️"
+                        title="Simple and flexible per-user pricing"
+                        description="텍스트 내용 ..."
+                        isClosable={true}
+                        onCancel={closeModal}
+                    />
+                )}
+
+                {activeModal === 'modal3' && (
+                    <Modal
+                        title="구매완료 되었습니다"
+                        description="구매완료 되었습니다"
+                        confirmText="확인"
+                        onConfirm={() => {
+                            closeModal();
+                        }}
+                    />
+                )}
             </S.Wrapper>
         </div>
     );
