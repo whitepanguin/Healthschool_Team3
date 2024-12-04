@@ -23,6 +23,7 @@ S.Wrapper = styled.div`
 
 S.Main = styled.main`
   width: 1669px;
+  height: 100vh;
   padding: 60px 60px;
 `;
 

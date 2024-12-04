@@ -78,24 +78,24 @@ const shapeCSS = {
 
 const sizeCSS = {
   small : css`
-    width: 55px;
+    min-width: 55px;
     height: 31px;
-    padding: 8px 0;
+    padding: 0px 10px;
   `,
   medium : css`
-    width: 126px;
+    min-width: 126px;
     height: 38px;
-    padding: 10px 0;
+    padding: 10px 10px;
   `,
   large : css`
-    width: 197px;
+    min-width: 197px;
     height: 53px;
-    padding: 14px 0;
+    padding: 14px 10px;
   `,
   full : css`
     width: 100%;
     aspect-ratio: 8 / 1;
-    padding: 20px 0;
+    padding: 20px ;
   `,
 }
 
@@ -145,6 +145,7 @@ const Button = styled.button`
   ${({border}) => borderCSS[border]};
   ${({color}) => colorCSS[color]};
   ${({font}) => fontCSS[font]};
+  box-shadow: 2px 2px 2px rgba(225, 225, 225, 0.7);
 `
 
 export default Button;

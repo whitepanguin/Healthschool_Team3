@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import S from "./style";
 import Logo from "./_component/Logo/Logo";
 import SearchBar from "./_component/SearchBar/SearchBar";
