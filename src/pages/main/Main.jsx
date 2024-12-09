@@ -38,6 +38,7 @@ const Main = () => {
           description="과학적 접근과 간단한 근력운동으로 누구나 원하는 몸을 만들어 보세요."
           imageUrl="https://cdn.pixabay.com/photo/2020/01/21/11/39/running-4782722_1280.jpg"
           instructor="슬기로운 운동생활"
+          tags={['안녕', '하세요']}
         />
       </div>
     </div>
