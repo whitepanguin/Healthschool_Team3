@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import S from './style';
 import BasicButton from '../../../../components/button/BasicButton';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+// 메인 매뉴
 const Menus = [
     {
         icon: '🔥',
@@ -13,13 +14,7 @@ const Menus = [
     {
         icon: '📄',
         label: '마이페이지',
-        subLabels: ['강사 상세페이지', '구매강의', '달력', '강사인증', '영상 업로드', '설정']
-        // {name : '상세페이지', path :'/mypage'}
-        // {name : '구매강의', path :'/mypage/vid'}
-        // {name : '달력', path :'/mypage/planner'}
-        // {name : '강사인증', path :'/mypage/trainer'}
-        // {name : '영상 업로드', path :'/upload'}
-        // {name : '설정', path :'/mypage/setting'}
+        path: '/mypage'
     },
     {
         icon: '🚀',
@@ -50,6 +45,7 @@ const Menus = [
     },
 ];
 
+// 유저 매뉴뉴
 const MyMenus = [
     {
         icon: '📢',
@@ -73,18 +69,26 @@ const MyMenus = [
     },
 ];
 
+//강사 메뉴
+
 const NavBar = () => {
     const location = useLocation();
     const [activeMenu, setActiveMenu] = useState(null);
     const [isMyPage, setIsMyPage] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log("🚀 ~ NavBar ~ location:", location);
-        setIsMyPage(location.pathname.includes('/mypage'));
-    }, [location]);
+        setIsMyPage(['/mypage', '/help'].some((path) => location.pathname.includes(path)));
+      }, [location]);
+      
 
-    const handleMenuClick = (menuLabel) => {
-        setActiveMenu((prev) => (prev === menuLabel ? null : menuLabel));
+    const handleMenuClick = (menu) => {
+        if (menu.path) {
+            navigate(menu.path);
+        } else {
+            setActiveMenu((prev) => (prev === menu.label ? null : menu.label)); // subLabels 토글
+        }
     };
 
     return (
@@ -94,7 +98,7 @@ const NavBar = () => {
                     <S.ProfileSection>
                         <S.ProfileImage />
                         <S.ProfileName>헬스짱</S.ProfileName>
-                        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>Q&A  답변</BasicButton>
+                        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'} font={'h7'}>Q&A  답변</BasicButton>
                     </S.ProfileSection>
 
                     <S.MenuWrapper>
@@ -123,11 +127,11 @@ const NavBar = () => {
                 <>
                     {Menus.map((menu, index) => (
                         <S.MenuWrapper key={index}>
-                            <S.MenuItem onClick={() => handleMenuClick(menu.label)}>
+                            <S.MenuItem onClick={() => handleMenuClick(menu)}>
                                 <S.MenuIcon>{menu.icon}</S.MenuIcon>
                                 <S.MenuLabel>{menu.label}</S.MenuLabel>
                             </S.MenuItem>
-                            {activeMenu === menu.label && (
+                            {activeMenu === menu.label && menu.subLabels && (
                                 <S.SubLabelWrapper>
                                     {menu.subLabels.map((subLabel, subIndex) => (
                                         <S.SubLabel key={subIndex}>{subLabel}</S.SubLabel>

@@ -108,7 +108,7 @@ const fontCSS = {
     font-size: ${({theme}) => theme.FONT_SIZE["h2"]};
     line-height: ${({theme}) => theme.FONT_LINE["h2"]};
   `,
-  h33 : css`
+  h3 : css`
     font-size: ${({theme}) => theme.FONT_SIZE["h3"]};
     line-height: ${({theme}) => theme.FONT_LINE["h3"]};
   `,
