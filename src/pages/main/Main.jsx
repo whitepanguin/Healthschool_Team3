@@ -9,6 +9,9 @@ const Main = () => {
       <Link to={'/components'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>컴포넌트</BasicButton>
       </Link>
+      <Link to={'/help'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>고객지원</BasicButton>
+      </Link>
       <div style={{ margin: 10 }}></div>
       <div style={{ display: 'flex', gap: 39 }}>
         <MediaCard
