@@ -12,6 +12,15 @@ const Main = () => {
       <Link to={'/help'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>고객지원</BasicButton>
       </Link>
+      <Link to={'/live'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>라이브</BasicButton>
+      </Link>
+      <Link to={'/mypage'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>마이페이지</BasicButton>
+      </Link>
+      <Link to={'/payment'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>결제</BasicButton>
+      </Link>
       <div style={{ margin: 10 }}></div>
       <div style={{ display: 'flex', gap: 39 }}>
         <MediaCard
@@ -41,6 +50,7 @@ const Main = () => {
           description="과학적 접근과 간단한 근력운동으로 누구나 원하는 몸을 만들어 보세요."
           imageUrl="https://cdn.pixabay.com/photo/2020/01/21/11/39/running-4782722_1280.jpg"
           instructor="슬기로운 운동생활"
+          tags={['안녕', '하세요']}
         />
       </div>
     </div>
