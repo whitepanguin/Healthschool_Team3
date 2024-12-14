@@ -10,7 +10,7 @@ const Main = () => {
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>컴포넌트</BasicButton>
       </Link>
       <Link to={'/help'}>
-        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>help</BasicButton>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>고객지원</BasicButton>
       </Link>
       <Link to={'/live'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>라이브</BasicButton>

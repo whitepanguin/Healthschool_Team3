@@ -10,6 +10,9 @@ import SignIn from '../pages/signIn/SignIn';
 import SignUp from '../pages/signUp/SignUp';
 import VideoUpload from '../pages/videoUpload/VideoUpload';
 import ComponentsPages from '../pages/componentsPages/ComponentsPages';
+import PopularQuestion from '../pages/help/childrenPages/PopularQuestion';
+import IndividualQuestion from '../pages/help/childrenPages/IndividualQuestion';
+import Notice from '../pages/help/childrenPages/Notice';
 
 const router = createBrowserRouter([
   {
@@ -21,9 +24,28 @@ const router = createBrowserRouter([
         element : <Main />
       },
       {
+        // 부모 페이지
         path : '/help',
-        element : <Help />
+        element : <Help />,
+        children : [
+          {
+            // 자식 요소 예) http://localhost:3000/help/자주듣는질문
+            path : 'popularquestion',
+            element : <PopularQuestion />,
+          },
+          {
+            // 자식 요소 예) http://localhost:3000/help/1:1문의
+            path : 'individualquestion',
+            element : <IndividualQuestion />,
+          },
+          {
+            // 자식 요소 예) http://localhost:3000/help/공지사항
+            path : 'notice',
+            element : <Notice />,
+          },
+        ]
       },
+
       {
         path : '/live',
         element : <Live />
@@ -70,5 +92,5 @@ const router = createBrowserRouter([
       v7_startTransition : true
   },
 })
-
+// test
 export default router;
