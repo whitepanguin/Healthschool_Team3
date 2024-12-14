@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './style';
+import BasicButton from '../../../../components/button/BasicButton';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+// 메인 매뉴
 const Menus = [
     {
         icon: '🔥',
@@ -11,13 +14,7 @@ const Menus = [
     {
         icon: '📄',
         label: '마이페이지',
-        subLabels: ['강사 상세페이지', '구매강의', '달력', '강사인증',  '영상 업로드', '설정']
-        // {name : '상세페이지', path :'/mypage'}
-        // {name : '구매강의', path :'/mypage/vid'}
-        // {name : '달력', path :'/mypage/planner'}
-        // {name : '강사인증', path :'/mypage/trainer'}
-        // {name : '영상 업로드', path :'/upload'}
-        // {name : '설정', path :'/mypage/setting'}
+        path: '/mypage'
     },
     {
         icon: '🚀',
@@ -48,30 +45,103 @@ const Menus = [
     },
 ];
 
-const NavBar = () => {
-    const [activeMenu, setActiveMenu] = useState(null);
+// 유저 매뉴뉴
+const MyMenus = [
+    {
+        icon: '📢',
+        label: '설정',
+        subLabels: [
+            { name: '사용자프로필', path: '/' },
+            { name: '프로필 변경', path: '/' },
+            { name: '클래스 개설', path: '/' },
+            { name: '알람 설정', path: '/' },
+        ]
+    },
+    {
+        icon: '📢',
+        label: '고객센터',
+        subLabels: [
+            { name: '사용자프로필', path: '/' },
+            { name: '프로필 변경', path: '/' },
+            { name: '클래스 개설', path: '/' },
+            { name: '알람 설정', path: '/' },
+        ]
+    },
+];
 
-    const handleMenuClick = (menuLabel) => {
-        setActiveMenu((prev) => (prev === menuLabel ? null : menuLabel));
+//강사 메뉴
+
+const NavBar = () => {
+    const location = useLocation();
+    const [activeMenu, setActiveMenu] = useState(null);
+    const [isMyPage, setIsMyPage] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log("🚀 ~ NavBar ~ location:", location);
+        setIsMyPage(['/mypage', '/help'].some((path) => location.pathname.includes(path)));
+      }, [location]);
+      
+
+    const handleMenuClick = (menu) => {
+        if (menu.path) {
+            navigate(menu.path);
+        } else {
+            setActiveMenu((prev) => (prev === menu.label ? null : menu.label)); // subLabels 토글
+        }
     };
 
     return (
         <S.Wrapper>
-            {Menus.map((menu, index) => (
-                <S.MenuWrapper key={index}>
-                    <S.MenuItem onClick={() => handleMenuClick(menu.label)}>
-                        <S.MenuIcon>{menu.icon}</S.MenuIcon>
-                        <S.MenuLabel>{menu.label}</S.MenuLabel>
-                    </S.MenuItem>
-                    {activeMenu === menu.label && (
-                        <S.SubLabelWrapper>
-                            {menu.subLabels.map((subLabel, subIndex) => (
-                                <S.SubLabel key={subIndex}>{subLabel}</S.SubLabel>
-                            ))}
-                        </S.SubLabelWrapper>
-                    )}
-                </S.MenuWrapper>
-            ))}
+            {isMyPage ? (
+                <>
+                    <S.ProfileSection>
+                        <S.ProfileImage />
+                        <S.ProfileName>헬스짱</S.ProfileName>
+                        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'} font={'h7'}>Q&A  답변</BasicButton>
+                    </S.ProfileSection>
+
+                    <S.MenuWrapper>
+                        {isMyPage && (
+                            <>
+                                {MyMenus.map((menu, index) => (
+                                    <div key={index}>
+                                        <S.MenuItem onClick={() => handleMenuClick(menu.label)}>
+                                            <S.MenuIcon>{menu.icon}</S.MenuIcon>
+                                            <S.MenuLabel>{menu.label}</S.MenuLabel>
+                                        </S.MenuItem>
+                                        {(
+                                            <S.SubLabelWrapper>
+                                                {menu.subLabels.map((subLabel, subIndex) => (
+                                                    <S.SubLabel key={subIndex}>{subLabel.name}</S.SubLabel>
+                                                ))}
+                                            </S.SubLabelWrapper>
+                                        )}
+                                    </div>
+                                ))}
+                            </>
+                        )}
+                    </S.MenuWrapper>
+                </>
+            ) : (
+                <>
+                    {Menus.map((menu, index) => (
+                        <S.MenuWrapper key={index}>
+                            <S.MenuItem onClick={() => handleMenuClick(menu)}>
+                                <S.MenuIcon>{menu.icon}</S.MenuIcon>
+                                <S.MenuLabel>{menu.label}</S.MenuLabel>
+                            </S.MenuItem>
+                            {activeMenu === menu.label && menu.subLabels && (
+                                <S.SubLabelWrapper>
+                                    {menu.subLabels.map((subLabel, subIndex) => (
+                                        <S.SubLabel key={subIndex}>{subLabel}</S.SubLabel>
+                                    ))}
+                                </S.SubLabelWrapper>
+                            )}
+                        </S.MenuWrapper>
+                    ))}
+                </>
+            )}
         </S.Wrapper>
     );
 };
