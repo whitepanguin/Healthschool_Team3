@@ -1,5 +1,5 @@
 import React from 'react';
-import S from '../style';
+import S from './style';
 const Notice = () => {
     return (
         <div>

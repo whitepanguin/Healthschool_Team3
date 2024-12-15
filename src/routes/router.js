@@ -10,9 +10,10 @@ import SignIn from '../pages/signIn/SignIn';
 import SignUp from '../pages/signUp/SignUp';
 import VideoUpload from '../pages/videoUpload/VideoUpload';
 import ComponentsPages from '../pages/componentsPages/ComponentsPages';
-import PopularQuestion from '../pages/help/childrenPages/PopularQuestion';
-import IndividualQuestion from '../pages/help/childrenPages/IndividualQuestion';
-import Notice from '../pages/help/childrenPages/Notice';
+import Notice from '../pages/help/_components/Notice/Notice';
+import IndividualQuestion from '../pages/help/_components/IndividualQuestion/IndividualQuestion';
+import PopularQuestion from '../pages/help/_components/PopularQuestion/PopularQuestion';
+
 
 const router = createBrowserRouter([
   {
