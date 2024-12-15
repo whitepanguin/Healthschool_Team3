@@ -1,6 +1,6 @@
 // IndividualQuestion.jsx
 import React from 'react';
-import S from '../style';  // S가 정의된 곳에서 import
+import S from './style';
 
 const IndividualQuestion = () => {
     return (
