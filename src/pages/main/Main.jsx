@@ -10,7 +10,16 @@ const Main = () => {
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>컴포넌트</BasicButton>
       </Link>
       <Link to={'/help'}>
-        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>고객지원</BasicButton>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>help</BasicButton>
+      </Link>
+      <Link to={'/live'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>라이브</BasicButton>
+      </Link>
+      <Link to={'/mypage'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>마이페이지</BasicButton>
+      </Link>
+      <Link to={'/payment'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>결제</BasicButton>
       </Link>
       <Link to={'/live'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>라이브</BasicButton>
