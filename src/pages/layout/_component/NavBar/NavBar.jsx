@@ -61,13 +61,13 @@ const MyMenus = [
         icon: '📢',
         label: '고객센터',
         subLabels: [
-            { name: '사용자프로필', path: '/' },
-            { name: '프로필 변경', path: '/' },
-            { name: '클래스 개설', path: '/' },
-            { name: '알람 설정', path: '/' },
+            { name: '공지사항', path: '/help/popularquestion' },
+            { name: '자주 묻는 질문', path: '/help/individualquestion' },
+            { name: '1:1 문의', path: '/help/notice' },
         ]
     },
 ];
+
 
 //강사 메뉴
 
@@ -82,6 +82,12 @@ const NavBar = () => {
         setIsMyPage(['/mypage', '/help','/live'].some((path) => location.pathname.includes(path)));
       }, [location]);
       
+
+    const handleMyMenuClick = (path) => {
+        console.log("🚀 ~ handleMenuClick ~ path:", path)
+        
+        navigate(path);
+    };
 
     const handleMenuClick = (menu) => {
         if (menu.path) {
@@ -106,14 +112,14 @@ const NavBar = () => {
                             <>
                                 {MyMenus.map((menu, index) => (
                                     <div key={index}>
-                                        <S.MenuItem onClick={() => handleMenuClick(menu.label)}>
+                                        <S.MenuItem>
                                             <S.MenuIcon>{menu.icon}</S.MenuIcon>
                                             <S.MenuLabel>{menu.label}</S.MenuLabel>
                                         </S.MenuItem>
                                         {(
                                             <S.SubLabelWrapper>
                                                 {menu.subLabels.map((subLabel, subIndex) => (
-                                                    <S.SubLabel key={subIndex}>{subLabel.name}</S.SubLabel>
+                                                    <S.SubLabel key={subIndex} onClick={() => handleMyMenuClick(subLabel.path)}>{subLabel.name}</S.SubLabel>
                                                 ))}
                                             </S.SubLabelWrapper>
                                         )}
