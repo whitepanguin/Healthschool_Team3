@@ -3,8 +3,9 @@ import S from './style';
 import X from '../XVector.png';
 import StreamBox from '../StreamBoxComponent/StreamBox';
 import PostImg from './PostImg.png';
-
-const LiveComponent1 = () => {
+import Toggle from './toggle.png';
+import { Link } from 'react-router-dom';
+const LiveComponent1 = ({onNext}) => {
   const [thumbnail, setThumbnail] = useState(PostImg);
   const [isCustomImage, setIsCustomImage] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(true); // 모달 표시 여부 상태
@@ -59,8 +60,8 @@ const LiveComponent1 = () => {
                 placeholder="방송 유형을 선택하세요"
                 value={selectedStreamType}
                 onClick={toggleDropdown}
-                onChange={(e) => setSelectedStreamType(e.target.value)} // 
               />
+              <img src = {Toggle}/>
               {/* 드롭다운 표시 */}
               {isDropdownOpen && (
                 <div>
@@ -87,6 +88,11 @@ const LiveComponent1 = () => {
                 <S.PostThumbNailImg src={thumbnail} isCustomImage={isCustomImage} />
               </S.ImgBackground>
             </S.Label>
+            {/* <hr/> */}
+            <S.ButtonWrapper>
+              <S.NextButton onClick={onNext}>다음</S.NextButton>
+            </S.ButtonWrapper>
+            
           </S.ModalContent>
         </S.ModalWrapper>
       )}

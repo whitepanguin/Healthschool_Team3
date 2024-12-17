@@ -75,6 +75,7 @@ S.Input = styled.input`
 S.StreamLabel = styled.label`
     color: #717171;
     font-size: 14px;
+    padding-bottom: 10px;
 `
 S.PostThumbNailImg = styled.img`
   width:  ${({ isCustomImage }) => (isCustomImage ? "150px" : "50px")}; 
@@ -100,16 +101,37 @@ S.ImgBackground = styled.div`
     cursor: pointer;
 `
 S.InputWrapper = styled.div`
+    margin-bottom: 40px;
+    margin-top: 10px;
+    
   
-
-  /* 자식 요소 S.Input 스타일링 */
   input {
     width: 200px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
+    color : #000;
   }
 `;
+S.ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end; /* 버튼을 오른쪽으로 정렬 */
+  margin-top: 15px; /* 버튼 위에 여백 추가 */
+`;
 
+S.NextButton = styled.button`
+  padding: 10px 20px;
+  background-color: white; /* 버튼 색상 */
+  color: #000;
+  border-radius: 15px;
+  width: 90px;
+  height: 35px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+  &:hover {
+    background-color: #0056b3; /* 호버 시 색상 변경 */
+  }
+`;
 export default S;
