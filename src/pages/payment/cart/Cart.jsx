@@ -12,6 +12,13 @@ const Cart = () => {
       <Link to={'/'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>메인</BasicButton>
       </Link>
+      <S.ProgressWrapper>
+        <S.ProgressStep active>장바구니</S.ProgressStep>
+        <S.Arrow>{'>'}</S.Arrow>
+        <S.ProgressStep>주문/결제</S.ProgressStep>
+        <S.Arrow>{'>'}</S.Arrow>
+        <S.ProgressStep>완료</S.ProgressStep>
+      </S.ProgressWrapper>
       <S.Button>
         <h1>전체 체크</h1><BasicCheckBox/>
       </S.Button>
@@ -51,6 +58,12 @@ const Cart = () => {
             <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>주문 수정정</BasicButton>
           </Link>
         </S.PriceSection>
+        <S.PriceTotal>
+          <div>
+            <p>Total Price</p>
+            <p>35,000원</p>
+          </div>
+        </S.PriceTotal>
       </S.Card>
       </S.Button>
     </S.Container>

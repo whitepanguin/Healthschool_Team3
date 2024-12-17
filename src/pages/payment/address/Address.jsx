@@ -7,6 +7,13 @@ import BasicCheckBox from '../../../components/checkbox/BasicCheckBox';
 const Address = () => {
   return (
   <div>
+    <S.ProgressWrapper>
+        <S.ProgressStep >장바구니</S.ProgressStep>
+        <S.Arrow>{'>'}</S.Arrow>
+        <S.ProgressStep active>주문/결제</S.ProgressStep>
+        <S.Arrow>{'>'}</S.Arrow>
+        <S.ProgressStep>완료</S.ProgressStep>
+    </S.ProgressWrapper>
     <S.Container>
       <S.Header>회원 정보/ 주소</S.Header>
       <S.Section>
@@ -60,7 +67,7 @@ const Address = () => {
 
       <S.CardBox>
         <S.CardText>카드 간편 결제</S.CardText>
-        <S.TotalAmount>35,000원</S.TotalAmount>
+        <S.TotalAmount>37,000원</S.TotalAmount>
       </S.CardBox>
     </S.Container>
     <Link to={'/payment/transaction'}>

@@ -66,11 +66,6 @@ S.Details = styled.div`
   justify-content: center;
 `;
 
-S.ExtraCost = styled.div`
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
-`;
-
 S.Price = styled.div`
   font-size: 1.25rem;
   font-weight: bold;
@@ -91,18 +86,10 @@ S.Card = styled.div`
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
-  width: 80%;
+  /* width: 80%; */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 `;
 
-S.ImageSection = styled.div`
-  grid-column: 1 / 2;
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-`;
 
 S.ContentSection = styled.div`
   grid-column: 2 / 3;
@@ -142,6 +129,40 @@ S.PriceSection = styled.div`
     }
   }
 `;
+S.PriceTotal = styled.div`
+grid-column: 4 / 5;
+  padding: 70px;
+  border-left: 1px solid #ddd;
+  align-content: center;
 
+  div {
+    margin: auto;
+  }
+  p {
+    margin: 20px 0;
+    font-size: 1rem;
+    &:first-child {
+      font-weight: bold;
+    }
+  }
+`;
+S.ProgressWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  font-size: 1em;
+  float: right;
+`;
+
+S.ProgressStep = styled.span`
+  color: ${(props) => (props.active ? '#3b82f6' : '#888')};
+  font-weight: ${(props) => (props.active ? 'bold' : 'normal')};
+`;
+
+S.Arrow = styled.span`
+  margin: 0 8px;
+  color: #888;
+`;
 
 export default S;

@@ -149,6 +149,23 @@ S.CheckOn = styled.div`
   align-items: center;
   gap: 0.5rem;
 `;
+S.ProgressWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  font-size: 1em;
+  float: right;
+`;
 
+S.ProgressStep = styled.span`
+  color: ${(props) => (props.active ? '#3b82f6' : '#888')};
+  font-weight: ${(props) => (props.active ? 'bold' : 'normal')};
+`;
+
+S.Arrow = styled.span`
+  margin: 0 8px;
+  color: #888;
+`;
 
 export default S;
