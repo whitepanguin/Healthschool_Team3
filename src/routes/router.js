@@ -13,6 +13,10 @@ import ComponentsPages from '../pages/componentsPages/ComponentsPages';
 import Notice from '../pages/help/_components/Notice/Notice';
 import IndividualQuestion from '../pages/help/_components/IndividualQuestion/IndividualQuestion';
 import PopularQuestion from '../pages/help/_components/PopularQuestion/PopularQuestion';
+import Address from '../pages/payment/address/Address';
+import Info from '../pages/payment/info/Info';
+import Transaction from '../pages/payment/transaction/Transaction';
+import Cart from '../pages/payment/cart/Cart';
 
 
 const router = createBrowserRouter([
@@ -57,7 +61,25 @@ const router = createBrowserRouter([
       },
       {
         path : '/payment',
-        element : <Payment />
+        element : <Payment />,
+        children : [
+          {
+            path : 'address',
+            element : <Address />,
+          },
+          {
+            path : 'cart',
+            element : <Cart />,
+          },
+          {
+            path : 'transaction',
+            element : <Transaction />,
+          },
+          {
+            path : 'info',
+            element : <Info />,
+          },
+        ]
       },
       {
         path : '/search',

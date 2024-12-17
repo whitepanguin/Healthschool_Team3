@@ -18,16 +18,7 @@ const Main = () => {
       <Link to={'/mypage'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>마이페이지</BasicButton>
       </Link>
-      <Link to={'/payment'}>
-        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>결제</BasicButton>
-      </Link>
-      <Link to={'/live'}>
-        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>라이브</BasicButton>
-      </Link>
-      <Link to={'/mypage'}>
-        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>마이페이지</BasicButton>
-      </Link>
-      <Link to={'/payment'}>
+      <Link to={'/payment/cart'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>결제</BasicButton>
       </Link>
       <div style={{ margin: 10 }}></div>
