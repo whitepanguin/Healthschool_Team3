@@ -11,7 +11,7 @@ S.Title = styled.div`
     align-items : center
 `
 
-S.h1 = styled.h1`
+S.MainTitle = styled.h1`
   font-size: 32px;
   margin : 10px
 `;
