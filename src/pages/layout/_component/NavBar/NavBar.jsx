@@ -79,7 +79,7 @@ const NavBar = () => {
 
     useEffect(() => {
         console.log("🚀 ~ NavBar ~ location:", location);
-        setIsMyPage(['/mypage', '/help'].some((path) => location.pathname.includes(path)));
+        setIsMyPage(['/mypage', '/help','/live'].some((path) => location.pathname.includes(path)));
       }, [location]);
       
 
