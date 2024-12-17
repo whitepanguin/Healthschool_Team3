@@ -17,7 +17,7 @@ const PopularQuestion = () => {
     return (
         <div>
             <S.Title>
-                <S.h1>헬스쿨 고객지원</S.h1>
+                <S.MainTitle >헬스쿨 고객지원</S.MainTitle >
             </S.Title>
             <S.Main>
                 {QuestionList.map((datas, i) => (
