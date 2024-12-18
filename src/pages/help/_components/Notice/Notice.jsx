@@ -1,5 +1,6 @@
 import React from 'react';
 import S from './style';
+import BasicCheckBox from '../../../../components/checkbox/BasicCheckBox';
 const Notice = () => {
     return (
         <div>
@@ -11,7 +12,7 @@ const Notice = () => {
             <S.Main>
                 <S.Notice>
                     <S.Topic>
-                        <S.InputCheck type="checkbox" />
+                        <BasicCheckBox />
                         <S.h4>공지사항 :</S.h4>
                     </S.Topic>
                     <div>
@@ -20,7 +21,7 @@ const Notice = () => {
                 </S.Notice>
                 <S.Notice>
                     <S.Topic>
-                        <S.InputCheck type="checkbox" />
+                        <BasicCheckBox  />
                         <S.h4>공지사항 :</S.h4>
                     </S.Topic>
                     <div>
@@ -29,7 +30,7 @@ const Notice = () => {
                 </S.Notice>
                 <S.Notice>
                     <S.Topic>
-                        <S.InputCheck type="checkbox" />
+                        <BasicCheckBox  />
                         <S.h4>공지사항 :</S.h4>
                     </S.Topic>
                     <div>
@@ -38,7 +39,7 @@ const Notice = () => {
                 </S.Notice>
                 <S.Notice>
                     <S.Topic>
-                        <S.InputCheck type="checkbox" />
+                        <BasicCheckBox />
                         <S.h4>공지사항 :</S.h4>
                     </S.Topic>
                     <div>

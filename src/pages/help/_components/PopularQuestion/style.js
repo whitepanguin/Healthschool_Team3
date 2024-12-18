@@ -51,6 +51,12 @@ S.ContainerBox = styled.div`
     border : 1px solid #fff;
     display: flex;
     flex-derection: column;
+    justify-content : space-between;
     align-items : center;
+`
+
+S.ArrowImg = styled.img`
+width : 50px;
+height : 50px;
 `
 export default S; 
