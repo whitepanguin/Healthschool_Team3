@@ -10,6 +10,7 @@ S.RadioWrapper = styled.div`
 
 S.Radio = styled.input.attrs({ type: "radio" })`
   appearance: none;
+  
   width: 20px;
   height: 20px;
   border: 2px solid ${({ theme }) => theme.PALLETE.black};
@@ -55,7 +56,7 @@ S.Radio = styled.input.attrs({ type: "radio" })`
 `;
 
 S.Label = styled.label`
-  font-size: 14px;
+  font-size: 16px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 

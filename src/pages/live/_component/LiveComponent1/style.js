@@ -103,7 +103,7 @@ S.ImgBackground = styled.div`
 S.InputWrapper = styled.div`
     margin-bottom: 40px;
     margin-top: 10px;
-    
+    position: relative;
   
   input {
     width: 200px;

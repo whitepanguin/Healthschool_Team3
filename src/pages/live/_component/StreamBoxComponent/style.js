@@ -10,6 +10,7 @@ S.StreamBoxWrapper= styled.div`
     border : 1px solid #717171;
     margin-top: 5px;
     display: flex;
+    align-items: center;
 `
 S.StreamImg = styled.img`
     width: 22px;
