@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import S from './style';
+import MediaCard from '../../../../components/mediaCard/MediaCard';
+
 
 const PopularQuestion = () => {
     const [question, setQuestion] = useState("");
@@ -26,9 +28,14 @@ const PopularQuestion = () => {
                         {datas.question}
                     </S.Management>
                        <ul>
+
                        {datas.topic.map((item, j) => (
                            <S.Li key={j}>
-                              <S.ContainerBox>{item}</S.ContainerBox> 
+                              <S.ContainerBox>
+                                {item}
+                                <S.ArrowImg src="https://cdn-icons-png.flaticon.com/512/271/271228.png" alt="arrow" /> 
+                            </S.ContainerBox>
+                              
                            </S.Li>
                        ))}
                         </ul>
@@ -40,3 +47,5 @@ const PopularQuestion = () => {
 };
 
 export default PopularQuestion;
+
+
