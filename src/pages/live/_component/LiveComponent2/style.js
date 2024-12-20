@@ -136,5 +136,21 @@ S.RadioTextWrapper = styled.div`
     margin: 0;
   }
 `;
-
+S.RangeWrapper = styled.div`
+  margin-top: 25px;
+  width: 640px;
+  height: 170px;
+  border: 1px solid #fff;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* gap: 18px; */
+`
+S.RadioDiv = styled.div`
+  color: #717171;
+  font-size: 14px;
+  margin-left: 37px;
+  margin-bottom: 18px;
+`
 export default S;

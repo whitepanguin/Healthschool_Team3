@@ -5,12 +5,13 @@ const BasicRadio = ({ label, checked, onChange, disabled, value }) => {
     return (
         <S.RadioWrapper>
             <S.Radio
+                id= {value}
                 value={value}
                 checked={checked}
                 onChange={onChange}
                 disabled={disabled}
             />
-            {label && <S.Label disabled={disabled}>{label}</S.Label>}
+            {label && <S.Label htmlFor={value} disabled={disabled}>{label}</S.Label>}
         </S.RadioWrapper>
     );
 };
