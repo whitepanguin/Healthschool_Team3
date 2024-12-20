@@ -62,6 +62,7 @@ S.Account = styled.div`
     display : flex;
     flex-direction : column;
     justify-content : center;
+    gap : 20px;
     align-items: center;
 `
 
@@ -92,4 +93,6 @@ S.SubmitBtn = styled.button`
     border-radius : 8px;
     font-size : 24px;
 `
-export default S;
+
+
+export default S ;
