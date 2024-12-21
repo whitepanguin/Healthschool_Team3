@@ -41,9 +41,9 @@ const UserStatus = () => {
                 </S.ImagesWrapper>
             </Link>
             {userStatus === '로그인전' ? (
-                <>
+                <Link to={'/signin'}>
                     <BasicButton size={'small'} shape={'small'} variant={'primary'} color={'white'}>로그인</BasicButton>
-                </>
+                </Link>
             ) : (
                 <>
                     <BasicButton size={'small'} shape={'small'} variant={'primary'} color={'white'}>로그아웃</BasicButton>

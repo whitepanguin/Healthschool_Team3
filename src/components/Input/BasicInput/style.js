@@ -9,15 +9,15 @@ S.InputWrapper = styled.div`
 `;
 
 S.Input = styled.input`
-  width: 220px;
-  height: 42px;
+  width: ${({ width }) => width || '220px'};
+  height: ${({ height }) => height || '42px'};
   border-radius: 10px;
   background-color: ${({ $isFocused, state }) =>
     state === "error"
       ? "#FFECEC" // 오류 배경
       : state === "success"
       ? "#ECFFEC" // 성공 배경
-      :  $isFocused
+      : $isFocused
       ? "#FFFFFF" // 포커스 배경
       : "#D9D9D9"}; // 기본 배경
   padding: 10px;
