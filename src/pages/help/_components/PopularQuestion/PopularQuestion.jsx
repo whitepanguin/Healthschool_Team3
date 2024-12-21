@@ -33,7 +33,7 @@ const PopularQuestion = () => {
                            <S.Li key={j}>
                               <S.ContainerBox>
                                 {item}
-                                <S.ArrowImg src="https://cdn-icons-png.flaticon.com/512/271/271228.png" alt="arrow" /> 
+                                <S.ArrowImg src={process.env.PUBLIC_URL + `/images/help/arrow.png`} alt="arrow" /> 
                             </S.ContainerBox>
                               
                            </S.Li>
