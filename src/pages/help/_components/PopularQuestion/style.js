@@ -30,8 +30,8 @@ S.h3 = styled.h3`
 
 
 S.Main = styled.div`
-    width : 100%
-    height : 100%
+    width : 100%;
+    height : 100%;
 `
 
 S.Li = styled.li`
