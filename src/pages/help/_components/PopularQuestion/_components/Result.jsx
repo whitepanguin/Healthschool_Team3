@@ -1,14 +1,15 @@
 import React from 'react';
+import { useQuestion } from '../QuestionContext';
+import S from './style';
 
-const Result = ({item}) => {
+const Result = () => {
+    const { selectedItem } = useQuestion();
 
-
-  return (
-    <div>
-
-      <p>선택한 항목: {item}</p>
-    </div>
-  );
+    return (
+        <S.resultContainer>
+            <S.MainTitle>선택한 항목: {selectedItem}</S.MainTitle>
+        </S.resultContainer>
+    );
 };
 
 export default Result;

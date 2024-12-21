@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import S from './style';
 import { Link, Outlet } from 'react-router-dom';
+import { useQuestion } from './QuestionContext';
 
 const PopularQuestion = () => {
     const [question, setQuestion] = useState("");
+    const { setSelectedItem } = useQuestion();
+
     const QuestionList = [
         {
             question: "계정 관리",
@@ -22,22 +25,24 @@ const PopularQuestion = () => {
             </S.Title>
             <S.Main>
                 {QuestionList.map((datas, i) => (
-                    <S.Container>
-                    <S.Management key={i}>
-                        {datas.question}
-                    </S.Management>
-                       <ul>
-
-                       {datas.topic.map((item, j) => (
-                           <S.Li key={j}>
-                            <Link to="/help/result">
-                                <S.ContainerBox>
-                                    {item}
-                                <S.ArrowImg src={process.env.PUBLIC_URL + `/images/help/arrow.png`} alt="arrow" /> 
-                                </S.ContainerBox>
-                            </Link>
-                           </S.Li>
-                       ))}
+                    <S.Container key={i}>
+                        <S.Management>
+                            {datas.question}
+                        </S.Management>
+                        <ul>
+                            {datas.topic.map((item, j) => (
+                                <S.Li key={j}>
+                                    <Link
+                                        to="/help/popularquestion/result"
+                                        onClick={() => setSelectedItem(item)} 
+                                    >
+                                        <S.ContainerBox>
+                                            {item}
+                                            <S.ArrowImg src={process.env.PUBLIC_URL + `/images/help/arrow.png`} alt="arrow" /> 
+                                        </S.ContainerBox>
+                                    </Link>
+                                </S.Li>
+                            ))}
                         </ul>
                     </S.Container>
                 ))}
