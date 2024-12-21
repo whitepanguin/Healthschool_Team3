@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import S from './style';
 import MediaCard from '../../../../components/mediaCard/MediaCard';
-
+import { Link, Outlet } from 'react-router-dom';
 
 const PopularQuestion = () => {
     const [question, setQuestion] = useState("");
@@ -12,40 +12,36 @@ const PopularQuestion = () => {
         },
         {
             question: "이용 가이드",
-            topic: ["영상 구매 방법", "영상 구독방법", "강사등록 가이드"]  // 이 항목에는 topic이 비어 있음
+            topic: ["영상 구매 방법", "영상 구독방법", "강사등록 가이드"] 
         }
     ];
 
     return (
         <div>
             <S.Title>
-                <S.MainTitle >헬스쿨 고객지원</S.MainTitle >
+                <S.MainTitle>헬스쿨 고객지원</S.MainTitle>
             </S.Title>
             <S.Main>
                 {QuestionList.map((datas, i) => (
-                    <S.Container>
-                    <S.Management key={i}>
-                        {datas.question}
-                    </S.Management>
-                       <ul>
-
-                       {datas.topic.map((item, j) => (
-                           <S.Li key={j}>
-                              <S.ContainerBox>
-                                {item}
-                                <S.ArrowImg src="https://cdn-icons-png.flaticon.com/512/271/271228.png" alt="arrow" /> 
-                            </S.ContainerBox>
-                              
-                           </S.Li>
-                       ))}
+                    <S.Container key={i}>
+                        <S.Management>
+                            {datas.question}
+                        </S.Management>
+                        <ul>
+                            {datas.topic.map((item, j) => (
+                                <S.Li key={j}>
+                                   <Link to="/help/result">
+                                        <S.ContainerBox>{item}</S.ContainerBox>
+                                    </Link>
+                                </S.Li>
+                            ))}
                         </ul>
-                   </S.Container>
+                    </S.Container>
                 ))}
             </S.Main>
+            <Outlet />
         </div>
     );
 };
 
 export default PopularQuestion;
-
-

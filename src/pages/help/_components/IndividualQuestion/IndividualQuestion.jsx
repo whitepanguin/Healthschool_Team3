@@ -1,7 +1,7 @@
 // IndividualQuestion.jsx
 import React from 'react';
 import S from './style';
-import InputBox from '../../../../components/Input/InputBox/InputBox';
+import { Outlet } from 'react-router-dom';
 
 const IndividualQuestion = () => {
     return (
@@ -15,10 +15,11 @@ const IndividualQuestion = () => {
                 <h3>상세보기</h3>
                 <hr />
                 <S.Account>
-                     <InputBox placeHolderText={'입력하세욧...'}  type="text" name="account" id="account" placeholder='문의 내용을 입력해주세요'/>
+                     <S.AccountTextBox type="text" name="account" id="account" placeholder='문의 내용을 입력해주세요'/>
                     <S.SubmitBtn className="submit">문의 전송</S.SubmitBtn>
                 </S.Account>
             </S.Main>
+            <Outlet />
         </div>
     );
 };
