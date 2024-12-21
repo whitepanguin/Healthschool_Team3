@@ -17,6 +17,7 @@ import Address from '../pages/payment/address/Address';
 import Info from '../pages/payment/info/Info';
 import Transaction from '../pages/payment/transaction/Transaction';
 import Cart from '../pages/payment/cart/Cart';
+import Result from '../pages/help/_components/PopularQuestion/_components/Result';
 
 
 const router = createBrowserRouter([
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
             // 자식 요소 예) http://localhost:3000/help/자주듣는질문
             path : 'popularquestion',
             element : <PopularQuestion />,
+            children : [
+              {
+              path : 'result',  
+              element : <Result/>
+            }]
           },
           {
             // 자식 요소 예) http://localhost:3000/help/1:1문의
