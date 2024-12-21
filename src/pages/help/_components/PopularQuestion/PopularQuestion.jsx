@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import S from './style';
-import MediaCard from '../../../../components/mediaCard/MediaCard';
-
+import { Link, Outlet } from 'react-router-dom';
 
 const PopularQuestion = () => {
     const [question, setQuestion] = useState("");
@@ -12,14 +11,14 @@ const PopularQuestion = () => {
         },
         {
             question: "이용 가이드",
-            topic: ["영상 구매 방법", "영상 구독방법", "강사등록 가이드"]  // 이 항목에는 topic이 비어 있음
+            topic: ["영상 구매 방법", "영상 구독방법", "강사등록 가이드"] 
         }
     ];
 
     return (
         <div>
             <S.Title>
-                <S.MainTitle >헬스쿨 고객지원</S.MainTitle >
+                <S.MainTitle>헬스쿨 고객지원</S.MainTitle>
             </S.Title>
             <S.Main>
                 {QuestionList.map((datas, i) => (
@@ -31,21 +30,21 @@ const PopularQuestion = () => {
 
                        {datas.topic.map((item, j) => (
                            <S.Li key={j}>
-                              <S.ContainerBox>
-                                {item}
+                            <Link to="/help/result">
+                                <S.ContainerBox>
+                                    {item}
                                 <S.ArrowImg src={process.env.PUBLIC_URL + `/images/help/arrow.png`} alt="arrow" /> 
-                            </S.ContainerBox>
-                              
+                                </S.ContainerBox>
+                            </Link>
                            </S.Li>
                        ))}
                         </ul>
-                   </S.Container>
+                    </S.Container>
                 ))}
             </S.Main>
+            <Outlet />
         </div>
     );
 };
 
 export default PopularQuestion;
-
-
