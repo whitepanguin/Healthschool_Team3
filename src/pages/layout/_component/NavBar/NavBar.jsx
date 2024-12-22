@@ -61,9 +61,9 @@ const MyMenus = [
         icon: '📢',
         label: '고객센터',
         subLabels: [
-            { name: '공지사항', path: '/help/popularquestion' },
-            { name: '자주 묻는 질문', path: '/help/individualquestion' },
-            { name: '1:1 문의', path: '/help/notice' },
+            { name: '공지사항', path: '/help/notice' },
+            { name: '자주 묻는 질문', path: '/help/popularquestion' },
+            { name: '1:1 문의', path: '/help/individualquestion' },
         ]
     },
 ];

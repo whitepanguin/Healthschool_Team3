@@ -4,7 +4,7 @@ import BasicInput from '../../components/Input/BasicInput/BasicInput';
 import BasicCheckBox from '../../components/checkbox/BasicCheckBox';
 import BasicButton from '../../components/button/BasicButton';
 import S from './style';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const [inputState, setInputState] = useState('');
@@ -14,12 +14,51 @@ const SignIn = () => {
   const [id, setId] = useState(''); // 아이디
   const [password, setPassword] = useState(''); // 비밀번호
 
-  //로그인 버튼 클릭
-  const hendleLogin = () => {
-    console.log('아이디:', id);
-    console.log('비밀번호:', password);
+  //
+  const naviagate = useNavigate();
+
+
+  const locationGoogle = () => {
+    window.location.href = "http://localhost:8000/auth/google";
   }
-   
+  const locationKakao = () => {
+    window.location.href = "http://localhost:8000/auth/kakao";
+  }
+  const locationNaver = () => {
+    window.location.href = "http://localhost:8000/auth/naver";
+  }
+
+  //로그인 버튼 클릭
+  const hendleLogin = async () => {
+    try {
+      const response = await fetch(`http://localhost:8000/auth/local`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: id,
+          password: password
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message || '로그인에 성공했습니다.');
+        localStorage.setItem("jwtToken", result.jwtToken);
+        naviagate("/");
+      } else {
+        throw new Error(result.message || '로그인에 실패했습니다.');
+      }
+
+    } catch (error) {
+      console.error('Error:', error.message);
+      alert(error.message);
+    }
+
+  }
+
   return (
     <S.Container>
       <S.LogoWrapper>
@@ -32,9 +71,9 @@ const SignIn = () => {
           state={inputState}
           errorText={''}
           susccessText={'아주 좋습니다!!'}
-          placeHolderText={'아이디'} 
+          placeHolderText={'아이디'}
           onChange={(e) => setId(e.target.value)}
-          />
+        />
         <BasicInput
           width={'336px'}
           height={'43px'}
@@ -42,9 +81,9 @@ const SignIn = () => {
           state={inputState}
           errorText={''}
           susccessText={'아주 좋습니다!!'}
-          placeHolderText={'비밀번호'} 
+          placeHolderText={'비밀번호'}
           onChange={(e) => setPassword(e.target.value)} // 입력값 업데이트
-          />
+        />
       </S.FormWrapper>
       <S.CheckWrapper>
         <BasicCheckBox
@@ -59,22 +98,22 @@ const SignIn = () => {
         />
       </S.CheckWrapper>
       <S.ButtonWrapper >
-        <BasicButton 
-        size={'full'} 
-        shape={'small'} 
-        variant={'primary'} 
-        color={'white'}
-        onClick={hendleLogin}
+        <BasicButton
+          size={'full'}
+          shape={'small'}
+          variant={'primary'}
+          color={'white'}
+          onClick={hendleLogin}
         >로그인</BasicButton>
         <p>또는</p>
         <div>
-          <S.IconButton>
+          <S.IconButton onClick={locationGoogle}>
             <img src={process.env.PUBLIC_URL + "/images/sign/google.png"} alt="google"></img>
           </S.IconButton>
-          <S.IconButton>
+          <S.IconButton onClick={locationKakao}>
             <img src={process.env.PUBLIC_URL + "/images/sign/kakao.png"} alt="kakao"></img>
           </S.IconButton>
-          <S.IconButton>
+          <S.IconButton onClick={locationNaver}>
             <img src={process.env.PUBLIC_URL + "/images/sign/naver.png"} alt="naver"></img>
           </S.IconButton>
         </div>
