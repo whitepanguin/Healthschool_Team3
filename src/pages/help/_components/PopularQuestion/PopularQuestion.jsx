@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import S from './style';
-import { Link, Outlet } from 'react-router-dom';
-import { useQuestion } from './QuestionContext';
+
 
 const PopularQuestion = () => {
-    const [question, setQuestion] = useState("");
-    const { setSelectedItem } = useQuestion();
+
 
     const QuestionList = [
         {
@@ -32,22 +30,16 @@ const PopularQuestion = () => {
                         <ul>
                             {datas.topic.map((item, j) => (
                                 <S.Li key={j}>
-                                    <Link
-                                        to="/help/popularquestion/result"
-                                        onClick={() => setSelectedItem(item)} 
-                                    >
                                         <S.ContainerBox>
                                             {item}
                                             <S.ArrowImg src={process.env.PUBLIC_URL + `/images/help/arrow.png`} alt="arrow" /> 
                                         </S.ContainerBox>
-                                    </Link>
                                 </S.Li>
                             ))}
                         </ul>
                     </S.Container>
                 ))}
             </S.Main>
-            <Outlet />
         </div>
     );
 };
