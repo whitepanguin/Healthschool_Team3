@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import S from './style';
 
-
 const PopularQuestion = () => {
-
+    const [clickedItem, setClickedItem] = useState("")
 
     const QuestionList = [
         {
@@ -12,9 +11,13 @@ const PopularQuestion = () => {
         },
         {
             question: "이용 가이드",
-            topic: ["영상 구매 방법", "영상 구독방법", "강사등록 가이드"] 
+            topic: ["영상 구매 방법", "영상 구독방법", "강사등록 가이드"]
         }
     ];
+
+    const handleClick = (item) => {
+        setClickedItem(item === clickedItem ? null : item);// 중복클릭 하면 다시 돌아옴
+    };
 
     return (
         <div>
@@ -29,11 +32,18 @@ const PopularQuestion = () => {
                         </S.Management>
                         <ul>
                             {datas.topic.map((item, j) => (
-                                <S.Li key={j}>
-                                        <S.ContainerBox>
-                                            {item}
-                                            <S.ArrowImg src={process.env.PUBLIC_URL + `/images/help/arrow.png`} alt="arrow" /> 
-                                        </S.ContainerBox>
+                                <S.Li key={j} onClick={() => handleClick(item)}>
+                                    <S.ContainerBox>
+                                        {item}
+                                        {/* 추후에 Link태그 넣을 예정 */}
+                                        {clickedItem === item && <span>{item}페이지로 이동:</span>}
+                                        <S.ArrowImg
+                                            src={clickedItem === item 
+                                                ? process.env.PUBLIC_URL + `/images/help/close.png` 
+                                                : process.env.PUBLIC_URL + `/images/help/arrow.png`} 
+                                            alt="arrow" 
+                                        />
+                                    </S.ContainerBox>
                                 </S.Li>
                             ))}
                         </ul>
