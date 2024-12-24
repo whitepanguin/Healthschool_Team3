@@ -7,7 +7,6 @@ const StreamBox = ({title, onClick}) => {
         <S.StreamBoxWrapper style={{cursor:'pointer'}} onClick={onClick}>
             <S.StreamImg src={process.env.PUBLIC_URL + "/images/live/StreamImg.png"} alt="Stream Image"/>
             <S.StreamText>{title}</S.StreamText>
-          
         </S.StreamBoxWrapper>
     );
 };
