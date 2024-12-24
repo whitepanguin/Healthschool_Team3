@@ -17,6 +17,7 @@ import Address from '../pages/payment/address/Address';
 import Info from '../pages/payment/info/Info';
 import Transaction from '../pages/payment/transaction/Transaction';
 import Cart from '../pages/payment/cart/Cart';
+import MyVideoManage from '../pages/MyVideoManage/MyVideoManage';
 
 
 const router = createBrowserRouter([
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
 
       {
         path : '/live',
-        element : <Live />
+        element : <Live />,
       },
       {
         path : '/mypage',
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
         path : '/components',
         element : <ComponentsPages />
       },
+      {
+        path : '/myVideoManage',
+        element : <MyVideoManage/>
+      }
     ]
   }
 ],

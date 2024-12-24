@@ -1,5 +1,7 @@
+
 import React, { useEffect, useState } from "react";
-import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useSearchParams } from "react-router-dom";
+
 import S from "./style";
 import Logo from "./_component/Logo/Logo";
 import SearchBar from "./_component/SearchBar/SearchBar";
@@ -9,6 +11,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser, setUserStatus } from "../../modules/user";
 
 const Layout = () => {
+
+  const location = useLocation();  // 현재 경로를 가져옴
+
+  // 숨기고 싶은 경로 목록을 배열로 설정
+  const hiddenPaths = ['/myVideoManage']; // 여러 경로 추가 가능
+
+  // 현재 경로가 hiddenPaths 배열에 포함되어 있으면 NavBar를 숨기도록 설정
+  const isNavVisible = !hiddenPaths.includes(location.pathname);
+
   // 최초 사용자가 토큰을 가지고 있는지 확인하고, 토큰 요청을 보낸다.
   // 토큰 요청시 만료되었다면 삭제하고, 만료가 되지 않았다면 자동으로 로그인 시킨다.
   const { isLogin, currentUser } = useSelector(state => state.user);
@@ -49,6 +60,7 @@ const Layout = () => {
       
   }, [jwtToken])
 
+
   return (
     <S.BackGround>
       <S.Header> 
@@ -58,12 +70,14 @@ const Layout = () => {
       </S.Header>
 
       <S.Wrapper>
-        <S.Nav>
-          <NavBar/>
-        </S.Nav>
+        {isNavVisible && (  // 조건부 렌더링: NavBar를 특정 경로에서만 보이도록 설정
+          <S.Nav>
+            <NavBar />
+          </S.Nav>
+        )}
 
         <S.Main> 
-          <Outlet/>  
+          <Outlet />  {/* 자식 라우트들이 이곳에 렌더링됩니다 */}
         </S.Main>
       </S.Wrapper>
 

@@ -49,7 +49,7 @@ const Live = () => {
         <LiveComponent2
           onPrev={goToPreviousStep}
           onData={handleComponent2Data}
-          onSubmit={() => console.log("Submit")}
+          onSubmit={() => console.log(streamData)}
         />
       )}
     </div>
