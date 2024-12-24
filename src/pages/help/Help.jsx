@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 const Help = () => {
   return (
     <div>
-      <Outlet />
+        <Outlet/>
     </div>
   );
 };

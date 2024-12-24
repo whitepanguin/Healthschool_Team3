@@ -86,6 +86,7 @@ S.InputCheck = styled.input.attrs({ type: 'checkbox' })`
     height : 25px;
 `
 
+
 S.SubmitBtn = styled.button`
     width : 500px;
     height : 70px;
