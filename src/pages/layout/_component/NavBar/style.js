@@ -74,6 +74,13 @@ S.ProfileImage = styled.div`
   border-radius: 50%;
   background-color: #555;
   margin-bottom: 10px;
+  overflow: hidden;
+`;
+
+S.Profile = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 S.ProfileName = styled.div`
