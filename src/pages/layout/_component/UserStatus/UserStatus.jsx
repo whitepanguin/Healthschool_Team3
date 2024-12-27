@@ -8,11 +8,10 @@ import { setUser, setUserStatus } from '../../../../modules/user';
 const UserStatus = () => {
     // 로그인전, 로그인후, 로그인후(강사)
     const { isLogin, currentUser } = useSelector(state => state.user);
+    const { name, isTeacher, profile } = currentUser
     const dispatch = useDispatch();
     //알람확인
     const [alarm, setAlarm] = useState([]);
-    //강사확인
-    const [isInstructor, setIsInstructor] = useState(false);
 
     const handleLogout = () => {
         localStorage.removeItem("jwtToken")
@@ -24,7 +23,7 @@ const UserStatus = () => {
         <S.Wrapper>
             {isLogin && (
                 <S.UserName>
-                    <p>{currentUser.name} 회원님</p>
+                    <p>{name} 회원님</p>
                 </S.UserName>
             )}
             <Link>
@@ -35,10 +34,14 @@ const UserStatus = () => {
                     />
                 </S.ImagesWrapper>
             </Link>
-            {isInstructor && isLogin && (
+            {isTeacher && isLogin && (
                 <>
-                    <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>영상업로드</BasicButton>
-                    <BasicButton size={'medium'} shape={'small'} variant={'live'} color={'white'}>라이브 온</BasicButton>
+                    <Link to={'/live'}>
+                        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>영상업로드</BasicButton>
+                    </Link>
+                    <Link to={'/live'}>
+                        <BasicButton size={'medium'} shape={'small'} variant={'live'} color={'white'}>라이브 온</BasicButton>
+                    </Link>
                 </>
             )}
             <Link>

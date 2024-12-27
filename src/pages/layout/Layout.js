@@ -22,20 +22,20 @@ const Layout = () => {
 
   // 최초 사용자가 토큰을 가지고 있는지 확인하고, 토큰 요청을 보낸다.
   // 토큰 요청시 만료되었다면 삭제하고, 만료가 되지 않았다면 자동으로 로그인 시킨다.
-  const { isLogin, currentUser } = useSelector(state => state.user);
+  const { currentUser, isLogin } = useSelector((state) => state.user)
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
-  const [jwtToken, setJwtToken] = useState(""); 
-  const navigate = useNavigate();
-  
-  useEffect(() => {
-    if(localStorage.getItem("jwtToken") || searchParams.get("jwtToken")){
-      console.log("🚀 ~ useEffect ~ 소셜에만 반응해?:", jwtToken);
-        setJwtToken(localStorage.getItem("jwtToken")|| searchParams.get("jwtToken")) 
-        localStorage.setItem("jwtToken",jwtToken )
-        navigate("/", {replace : true})
-    }
+  const jwtToken = localStorage.getItem("jwtToken") || searchParams.get("jwtToken");
 
+  const navigate = useNavigate()
+
+  useEffect(() => {
+
+    if(jwtToken){
+      localStorage.setItem("jwtToken", jwtToken)
+      navigate("/")
+    }
+    
     if(jwtToken){
       const isAuthenticate = async () => {
         const response = await fetch("http://localhost:8000/auth/jwt", {
@@ -56,9 +56,15 @@ const Layout = () => {
           dispatch(setUserStatus(true)) // isLogin
         })
         .catch(console.error)
+
+    }else {
+      dispatch(setUser({})) // currentUser
+      dispatch(setUserStatus(false)) // isLogin
+      localStorage.clear()
     }
       
   }, [jwtToken])
+
 
 
   return (
