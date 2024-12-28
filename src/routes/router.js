@@ -17,7 +17,11 @@ import Address from '../pages/payment/address/Address';
 import Info from '../pages/payment/info/Info';
 import Transaction from '../pages/payment/transaction/Transaction';
 import Cart from '../pages/payment/cart/Cart';
+import Profile from '../pages/myPage/_component/profile/Profile';
 import MyVideoManage from '../pages/MyVideoManage/MyVideoManage';
+import My from '../pages/myPage/_component/my/My';
+import UpdateProgileImg from '../pages/myPage/_component/updateProfileImg/UpdateProfileImg';
+import Update from '../pages/myPage/_component/update/Update';
 
 
 const router = createBrowserRouter([
@@ -58,7 +62,36 @@ const router = createBrowserRouter([
       },
       {
         path : '/mypage',
-        element : <MyPage />
+        element : <MyPage />,
+        children : [
+          {
+            path : 'my',
+            element : <My />,
+          },
+          {
+            path : 'profile',
+            element : <Profile />,
+          },
+          {
+            path : 'profile-img',
+            element : <UpdateProgileImg />,
+          },
+          {
+            path : 'update',
+            element : <Update />,
+          },
+          // {
+          //   // 자식 요소 예) http://localhost:3000/help/1:1문의
+          //   path : 'individualquestion',
+          //   element : <IndividualQuestion />,
+          // },
+          // {
+          //   // 자식 요소 예) http://localhost:3000/help/공지사항
+          //   path : 'notice',
+          //   element : <Notice />,
+          // },
+        ]
+        
       },
       {
         path : '/payment',
