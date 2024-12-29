@@ -54,7 +54,7 @@ const MyMenus = [
         subLabels: [
             { name: '회원 정보', path: '/mypage/profile' },
             { name: '프로필 사진 변경', path: '/mypage/profile-img' },
-            { name: '비밀번호 변경', path: '/mypage/updatePassword' },
+            { name: '비밀번호 변경', path: '/mypage/update-password' },
             { name: '강사 인증', path: '/mypage/certify' },
         ]
     },

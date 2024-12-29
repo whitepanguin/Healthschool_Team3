@@ -22,6 +22,8 @@ import MyVideoManage from '../pages/MyVideoManage/MyVideoManage';
 import My from '../pages/myPage/_component/my/My';
 import UpdateProgileImg from '../pages/myPage/_component/updateProfileImg/UpdateProfileImg';
 import Update from '../pages/myPage/_component/update/Update';
+import UpdatePassword from '../pages/myPage/_component/updatePassword/UpdatePassword';
+import Certify from '../pages/myPage/_component/certify/Certify';
 
 
 const router = createBrowserRouter([
@@ -79,6 +81,14 @@ const router = createBrowserRouter([
           {
             path : 'update',
             element : <Update />,
+          },
+          {
+            path : 'update-password',
+            element : <UpdatePassword />,
+          },
+          {
+            path : 'certify',
+            element : <Certify />,
           },
           // {
           //   // 자식 요소 예) http://localhost:3000/help/1:1문의
