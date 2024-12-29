@@ -16,7 +16,7 @@ const Profile = ({user}) => {
       </S.ProfileInfo>
       <S.ProfileInfo >
         <S.ProfileInfoHead >닉네임</S.ProfileInfoHead>
-        <S.profileData >생년 월일</S.profileData>
+        <S.profileData >Hong</S.profileData>
       </S.ProfileInfo>
       <S.ProfileInfo >
         <S.ProfileInfoHead >생년월일</S.ProfileInfoHead>
