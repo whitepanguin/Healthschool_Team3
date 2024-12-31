@@ -15,7 +15,7 @@ const Menus = [
     {
         icon: '📄',
         label: '마이페이지',
-        path: '/mypage'
+        path: '/mypage/my'
     },
     {
         icon: '🚀',
@@ -52,10 +52,10 @@ const MyMenus = [
         icon: '📢',
         label: '설정',
         subLabels: [
-            { name: '사용자프로필', path: '/' },
-            { name: '프로필 변경', path: '/' },
-            { name: '클래스 개설', path: '/' },
-            { name: '알람 설정', path: '/' },
+            { name: '회원 정보', path: '/mypage/profile' },
+            { name: '프로필 사진 변경', path: '/mypage/profile-img' },
+            { name: '비밀번호 변경', path: '/mypage/update-password' },
+            { name: '강사 인증', path: '/mypage/certify' },
         ]
     },
     {
