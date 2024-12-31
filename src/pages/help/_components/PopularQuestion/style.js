@@ -7,12 +7,12 @@ S.Title = styled.div`
     height : 120px;
     display: flex;
     flex-direction: column;
-    align-items : center
+    align-items : center;
 `
 
 S.MainTitle = styled.h1`
   font-size: 32px;
-  margin : 10px
+  margin : 10px;
 `;
 
 S.Management = styled.h2`
@@ -60,11 +60,10 @@ S.Nav = styled.div`
     width: 100%;
     height: 100px;
     padding: 10px;
-    margin: 10px;
-    background-color: #d9d9d9;
+    margin: 0 10px;
     border: 1px solid white;
     margin-top: 10px;
     display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};  // display 값이 isVisible에 따라 변경됩니다.
 `;
 
-export default S;
+export default S;                      

@@ -80,6 +80,20 @@ S.AccountTextBox = styled.input.attrs({ type: 'text' })`
 
 `;
 
+
+S.NoticeBox = styled.div`
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+`
+S.DeleteImg = styled.img`
+    width: 50px;
+    height: 50px;
+` 
+
+
 S.InputCheck = styled.input.attrs({ type: 'checkbox' })`
     width : 25px;
     height : 25px;
