@@ -4,6 +4,8 @@ import VideoInform from './_component/videoInformation/VideoInform';
 import CommentComponent from './_component/commentComponent/CommnentComponent';
 import CompletSortComponent from './_component/SortComponent/CompletSortComponent';
 import OthersComment from './_component/othersComment/OthersComment';
+import ReactPlayer from "react-player";
+import { useEffect, useState } from 'react';
 const MyVideoManage = () => {
     const userImage = process.env.PUBLIC_URL + "/images/myVideoManage/carrot.jpg";
     const userId = "john_doe_123";
@@ -13,7 +15,23 @@ const MyVideoManage = () => {
     const viewCount = 2960
     const postDate = "2023-07-30"
     const myImage = process.env.PUBLIC_URL + "/images/myVideoManage/carrot.jpg";
+    const [videoUrl, setVideoUrl] = useState("");
 
+    useEffect(() => {
+      // 백엔드에서 동영상 URL 가져오기
+      const fetchVideoUrl = async () => {
+        try {
+          const response = await fetch("http://localhost:8000/api/videos"); // API 엔드포인트
+          const data = await response.json();
+          console.log(data)
+          setVideoUrl(data[0]?.url); // 첫 번째 동영상 URL 설정
+        } catch (error) {
+          console.error("동영상 URL을 불러오는 중 오류 발생:", error);
+        }
+      };
+  
+      fetchVideoUrl();
+    }, []);
     // 아래 videoData는 임시 데이터로 선언된 것임
     const videoData = [
         {
@@ -60,10 +78,18 @@ const MyVideoManage = () => {
     
     return (
         // 전체box div
-        <div style= {{padding : '10px 0 0 200px'}}> 
-            <div style={{display:'flex', gap:'50px'}}>
+        <div style= {{margin : '0 0 0 180px' }}> 
+            <div style={{display:'flex', gap:'30px', alignItems:"center"}}>
                 {/* 비디오 */}
-                <S.Video ></S.Video>
+                <S.VideoContainer>
+                <ReactPlayer
+                url={videoUrl} // 동영상 URL
+                playing={false} // 자동 재생 여부
+                controls={true} // 재생 버튼 표시 여부
+                width="100%"
+                height="100%"
+                />
+                </S.VideoContainer>
                 {/* 내 동영상 목록 */}
                 <S.VideoListWrapper>
                     {videoData.map((video, index) => (
