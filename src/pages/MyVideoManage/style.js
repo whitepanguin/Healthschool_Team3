@@ -1,15 +1,20 @@
 import styled from "styled-components";
-
 const S = {};
-S.Video = styled.div`
-    width: 1200px;
-    height: 600px;
-    background-color: aquamarine;
-    
-    /* margin-top: 70px; */
-`
+S.VideoContainer = styled.div`
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex; /* flexbox 사용 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+`;
+
+S.Video = styled.video`
+  width: 100%; /* Video의 너비를 90%로 설정 */
+  height: 100%; /* Video의 높이를 90%로 설정 */
+  background-color: aquamarine;
+`;
 S.VideoListWrapper = styled.div`
-    width: 420px;
+    width: 30%;
     height: 600px;
     background-color: #1a1b1e;
     display: flex;
