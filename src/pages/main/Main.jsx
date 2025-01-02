@@ -13,17 +13,20 @@ const Main = () => {
       <Link to={'/components'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>컴포넌트</BasicButton>
       </Link>
-      <Link to={'/help'}>
+      <Link to={'/help/notice'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>help</BasicButton>
       </Link>
       <Link to={'/live'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>라이브</BasicButton>
       </Link>
-      <Link to={'/mypage'}>
+      <Link to={'/mypage/profile'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>마이페이지</BasicButton>
       </Link>
       <Link to={'/payment/cart'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>결제</BasicButton>
+      </Link>
+      <Link to={'/myVideoManage'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>영상</BasicButton>
       </Link>
       <div style={{ margin: 10 }}></div>
       <div style={{ display: 'flex', gap: 39 }}>
