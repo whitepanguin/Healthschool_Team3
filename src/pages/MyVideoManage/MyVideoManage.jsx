@@ -6,7 +6,12 @@ import CompletSortComponent from './_component/SortComponent/CompletSortComponen
 import OthersComment from './_component/othersComment/OthersComment';
 import ReactPlayer from "react-player";
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { faCropSimple } from '@fortawesome/free-solid-svg-icons';
 const MyVideoManage = () => {
+    const location = useLocation(); // useLocation으로 전달된 state 가져오기
+    const videoDataFromMediaCard = location.state; // 모든 props를 videoData로 받기
+    console.log("Location State:", videoDataFromMediaCard);
     const userImage = process.env.PUBLIC_URL + "/images/myVideoManage/carrot.jpg";
     const userId = "john_doe_123";
     const subscribeNum = 5000;
@@ -16,22 +21,9 @@ const MyVideoManage = () => {
     const postDate = "2023-07-30"
     const myImage = process.env.PUBLIC_URL + "/images/myVideoManage/carrot.jpg";
     const [videoUrl, setVideoUrl] = useState("");
-
-    useEffect(() => {
-      // 백엔드에서 동영상 URL 가져오기
-      const fetchVideoUrl = async () => {
-        try {
-          const response = await fetch("http://localhost:8000/api/videos"); // API 엔드포인트
-          const data = await response.json();
-          console.log(data)
-          setVideoUrl(data[0]?.url); // 첫 번째 동영상 URL 설정
-        } catch (error) {
-          console.error("동영상 URL을 불러오는 중 오류 발생:", error);
-        }
-      };
-  
-      fetchVideoUrl();
-    }, []);
+    const [uploadDate , setUploadDate] = useState("");
+    const [error, setError] = useState(""); // 에러 메시지
+    
     // 아래 videoData는 임시 데이터로 선언된 것임
     const videoData = [
         {
@@ -75,7 +67,16 @@ const MyVideoManage = () => {
           postDate: '2024-07-30',
         },
       ];
+      useEffect(() => {
+        if (videoDataFromMediaCard) {
+          setVideoUrl(videoDataFromMediaCard.videoUrl); // videoUrl 설정
+          setUploadDate(videoDataFromMediaCard.uploadDate); // 업로드 날짜 설정
+        }
+      }, [videoDataFromMediaCard]);
     
+      if (!videoDataFromMediaCard) {
+        return <div>에러: 동영상 데이터가 없습니다.</div>; // 데이터가 없을 경우 에러 표시
+      }
     return (
         // 전체box div
         <div style= {{margin : '0 0 0 180px' }}> 
@@ -83,7 +84,7 @@ const MyVideoManage = () => {
                 {/* 비디오 */}
                 <S.VideoContainer>
                 <ReactPlayer
-                url={videoUrl} // 동영상 URL
+                url={videoDataFromMediaCard.videoUrl} // 동영상 URL
                 playing={false} // 자동 재생 여부
                 controls={true} // 재생 버튼 표시 여부
                 width="100%"
@@ -106,13 +107,14 @@ const MyVideoManage = () => {
                 </S.VideoListWrapper>
             </div>
             <VideoInform
-                userImage={userImage}
-                userId={userId}
-                subscribeNum={subscribeNum}
-                userName={userName}
-                postTitle={postTitle}
-                viewCount={viewCount}
-                postDate={postDate}
+                userImage={videoDataFromMediaCard.imageUrl}
+                userId={videoDataFromMediaCard.email}
+                subscribeNum={videoDataFromMediaCard.likeCount}
+                userName={videoDataFromMediaCard.nickname}
+                postTitle={videoDataFromMediaCard.title}
+                viewCount={videoDataFromMediaCard.viewCount}
+                postDate={new Date(videoDataFromMediaCard.uploadDate).toLocaleDateString("ko-KR")}
+                editDate ={videoDataFromMediaCard.editDate}
             />
             <CommentComponent myImage = {myImage}/>
             <div style={{display:'flex', padding:'0 90px 0 0'}}>
