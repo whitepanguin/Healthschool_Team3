@@ -89,8 +89,8 @@ const MyVideoManage = () => {
                 postDate={postDate}
             />
             <CommentComponent myImage = {myImage}/>
-            <div style={{display:'flex',  padding:'0 90px 0 0'}}>
-              <CompletSortComponent/>
+            <div style={{display:'flex', padding:'0 90px 0 0'}}>
+            <CompletSortComponent/>
             </div>
             <div style={{display:"flex", flexDirection:'column', gap:'50px'}}>
               <OthersComment

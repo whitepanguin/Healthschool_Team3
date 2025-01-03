@@ -57,6 +57,9 @@ const colorCSS = {
   `,
   gray300 : css`
     color: ${({theme}) => theme.PALLETE.gray["300"] };
+  `,
+  gray900 : css`
+    color: ${({theme}) => theme.PALLETE.gray["900"] };
   `
 };
 

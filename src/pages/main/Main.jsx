@@ -25,6 +25,9 @@ const Main = () => {
       <Link to={'/payment/cart'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>결제</BasicButton>
       </Link>
+      <Link to={'/myVideoManage'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>내 동영상 관리</BasicButton>
+      </Link>
       <div style={{ margin: 10 }}></div>
       <div style={{ display: 'flex', gap: 39 }}>
         <MediaCard

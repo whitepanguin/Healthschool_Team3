@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import S from './style';
 
 const PopularQuestion = () => {
-    const [clickedItem, setClickedItem] = useState("")
+    const [clickedItem, setClickedItem] = useState(""); // 클릭된 항목을 추적
 
     const QuestionList = [
         {
@@ -16,7 +16,8 @@ const PopularQuestion = () => {
     ];
 
     const handleClick = (item) => {
-        setClickedItem(item === clickedItem ? null : item);// 중복클릭 하면 다시 돌아옴
+        // 클릭된 항목의 상태를 토글 (이미 클릭된 항목은 다시 비우고, 다른 항목을 클릭 시 변경)
+        setClickedItem(item === clickedItem ? "" : item);
     };
 
     return (
@@ -35,15 +36,16 @@ const PopularQuestion = () => {
                                 <S.Li key={j} onClick={() => handleClick(item)}>
                                     <S.ContainerBox>
                                         {item}
-                                        {/* 추후에 Link태그 넣을 예정 */}
-                                        {clickedItem === item && <span>{item}페이지로 이동:</span>}
                                         <S.ArrowImg
                                             src={clickedItem === item 
-                                                ? process.env.PUBLIC_URL + `/images/help/close.png` 
-                                                : process.env.PUBLIC_URL + `/images/help/arrow.png`} 
+                                                ? process.env.PUBLIC_URL + `/images/help/up.png` 
+                                                : process.env.PUBLIC_URL + `/images/help/down.png`} 
                                             alt="arrow" 
                                         />
                                     </S.ContainerBox>
+                                    <S.Nav isVisible={clickedItem === item}>
+                                        <div>{item}에 대한 추가 정보</div>
+                                    </S.Nav>
                                 </S.Li>
                             ))}
                         </ul>
