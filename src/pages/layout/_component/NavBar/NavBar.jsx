@@ -25,6 +25,10 @@ const Menus = [
         // {name : '현재 방송', path :'/live'}
         // {name : '지난 방송', path :'/live/vod'}
         // {name : 'QnA', path :'/live/qna'}
+        subLabels: [
+            { name: '현재 방송', path: '/live' },
+            { name: '영상', path: '/myVideoManage' },
+        ]
     },
     {
         icon: '🛒',
@@ -34,6 +38,10 @@ const Menus = [
         // {name : '회원정보/주소', path :'/payment/address'}
         // {name : '결제', path :'/payment/transaction'}
         // {name : '결제 내역/영수증', path :'/payment/info'}
+        subLabels: [
+            { name: '카트', path: '/payment/cart' },
+            { name: '주소', path: '/payment/address' },
+        ]
     },
     {
         icon: '📢',
