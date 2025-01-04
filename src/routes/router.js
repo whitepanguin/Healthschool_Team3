@@ -24,6 +24,11 @@ import UpdateProgileImg from '../pages/myPage/_component/updateProfileImg/Update
 import Update from '../pages/myPage/_component/update/Update';
 import UpdatePassword from '../pages/myPage/_component/updatePassword/UpdatePassword';
 import Certify from '../pages/myPage/_component/certify/Certify';
+import ProMyVideoList from '../pages/myPage/_component/videoList/ProMyVideoList';
+import NorMyVideoList from '../pages/myPage/_component/videoList/NorMyVideoList';
+import LiveVideoList from '../pages/myPage/_component/videoList/LiveVideoList';
+import QnAList from '../pages/myPage/_component/oftenQnA/QnAList';
+import Write from '../pages/myPage/_component/oftenQnA/Write';
 
 
 const router = createBrowserRouter([
@@ -90,18 +95,27 @@ const router = createBrowserRouter([
             path : 'certify',
             element : <Certify />,
           },
-          // {
-          //   // 자식 요소 예) http://localhost:3000/help/1:1문의
-          //   path : 'individualquestion',
-          //   element : <IndividualQuestion />,
-          // },
-          // {
-          //   // 자식 요소 예) http://localhost:3000/help/공지사항
-          //   path : 'notice',
-          //   element : <Notice />,
-          // },
+          {
+            path : 'pro-videolist',
+            element : <ProMyVideoList />,
+          },
+          {
+            path : 'videolist',
+            element : <NorMyVideoList />,
+          },
+          {
+            path : 'livelist',
+            element : <LiveVideoList />,
+          },
+          {
+            path : 'qnalist',
+            element : <QnAList />,
+          },
+          {
+            path: 'qnalist/write',
+            element: <Write />,
+          },
         ]
-        
       },
       {
         path : '/payment',

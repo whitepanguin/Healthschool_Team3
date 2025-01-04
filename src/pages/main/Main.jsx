@@ -59,7 +59,7 @@ const Main = () => {
       <Link to={'/live'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>라이브</BasicButton>
       </Link>
-      <Link to={'/mypage/profile'}>
+      <Link to={'/mypage/my'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>마이페이지</BasicButton>
       </Link>
       <Link to={'/payment/cart'}>
