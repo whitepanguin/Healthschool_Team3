@@ -58,4 +58,58 @@ S.ViewsCell = styled.td`
   width: 80px;
 `;
 
+S.QnaContainer = styled.div`
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 800px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+`;
+
+S.QnaTitle = styled.h2`
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+`;
+
+S.QnaList = styled.ol`
+  padding-left: 20px;
+  margin: 0;
+  list-style: decimal;
+  cursor: pointer;
+`;
+
+S.QnaItem = styled.li`
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+`;
+
+
+S.QnaAnswer = styled.div`
+  max-height: ${(props) => (props.isOpen ? "100px" : "0")};
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  padding: ${(props) => (props.isOpen ? "10px" : "0 10px")};
+  font-size: 1em;
+  border: ${(props) => (props.isOpen ? "1px solid #ddd" : "none")};
+  border-radius: 5px;
+  cursor: auto;
+`;
+
+S.NoAnswer = styled.div`
+  color: #3D6AFF;
+  font-size: 1em;
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color: #d9363e;
+  }
+`;
+
 export default S;

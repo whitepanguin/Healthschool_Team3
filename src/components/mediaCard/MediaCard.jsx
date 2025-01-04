@@ -13,7 +13,7 @@ const MediaCard = ({ title, date, description,nickname,viewCount, likeCount,vide
             </S.ImageWrapper>
             <S.Content>
                 <S.Instructor>
-                    {instructor} | {date}
+                    {instructor} | {date} | {viewCount}회
                 </S.Instructor>
                 <S.Title>{title}</S.Title>
                 <S.Description>{description}</S.Description>
