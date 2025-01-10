@@ -29,6 +29,7 @@ const ReplyComment = ({myImage, onCancel}) => {
   
       // 여기서 폼 전송 (예: axios 또는 fetch 사용)
       formRef.current.submit(); // 폼 전송
+      
     };
     const handleInputChange = (e) => {
         setReplyCommentText(e.target.innerText); // 텍스트 상태 업데이트

@@ -2,7 +2,7 @@ import React from 'react';
 import S from './style';
 import BasicTag from '../tag/BasicTag';
 
-const MediaCard = ({ title, date, description, imageUrl, instructor, tags }) => {
+const MediaCard = ({ title, date, description,nickname,viewCount, likeCount,videoUrl, imageUrl, instructor, tags ,uuid }) => {
     return (
         <S.CardContainer>
             <S.ImageWrapper>
