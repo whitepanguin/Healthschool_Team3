@@ -8,6 +8,8 @@ import ReactPlayer from "react-player";
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { faCropSimple } from '@fortawesome/free-solid-svg-icons';
+import {useSelector} from 'react-redux';
+
 const MyVideoManage = () => {
     const location = useLocation(); // useLocation으로 전달된 state 가져오기
     const videoDataFromMediaCard = location.state; // 모든 props를 videoData로 받기
@@ -23,7 +25,11 @@ const MyVideoManage = () => {
     const [videoUrl, setVideoUrl] = useState("");
     const [uploadDate , setUploadDate] = useState("");
     const [error, setError] = useState(""); // 에러 메시지
-    
+    const [comments, setComments] = useState([]); // 댓글 상태 추가
+    const [loading, setLoading] = useState(true); // 로딩 상태
+  
+    const videoId = videoDataFromMediaCard._id; // 동영상 ID
+    console.log("video ID= ", videoId)
     // 아래 videoData는 임시 데이터로 선언된 것임
     const videoData = [
         {
@@ -68,15 +74,34 @@ const MyVideoManage = () => {
         },
       ];
       useEffect(() => {
+        const fetchComments = async()=>{
+          try {
+            const response = await fetch(`http://localhost:8000/videos/${videoId}/comments`);
+            if(!response.ok){
+              throw new Error("댓글을 불러오는데 실패했습니다.")
+            }
+            const data = await response.json();
+            setComments(data);
+          }catch(err){
+            console.error("댓글 가져오기 실패: ", err);
+            setError(err.message);
+          }finally{
+            setLoading(false)
+          }
+        };
         if (videoDataFromMediaCard) {
           setVideoUrl(videoDataFromMediaCard.videoUrl); // videoUrl 설정
           setUploadDate(videoDataFromMediaCard.uploadDate); // 업로드 날짜 설정
         }
+        fetchComments();
       }, [videoDataFromMediaCard]);
     
       if (!videoDataFromMediaCard) {
         return <div>에러: 동영상 데이터가 없습니다.</div>; // 데이터가 없을 경우 에러 표시
       }
+      const handleAddComment = (newComment) => {
+        setComments((prevComments) => [newComment, ...prevComments]); // 새 댓글을 앞에 추가
+      };
     return (
         // 전체box div
         <div style= {{margin : '0 0 0 180px' }}> 
@@ -116,26 +141,26 @@ const MyVideoManage = () => {
                 postDate={new Date(videoDataFromMediaCard.uploadDate).toLocaleDateString("ko-KR")}
                 editDate ={videoDataFromMediaCard.editDate}
             />
-            <CommentComponent myImage = {myImage}/>
+            <CommentComponent videoId={videoDataFromMediaCard._id} onAddComment={handleAddComment}/>
             <div style={{display:'flex', padding:'0 90px 0 0'}}>
               <CompletSortComponent/>
             </div>
+            
             <div style={{display:"flex", flexDirection:'column', gap:'50px'}}>
-              <OthersComment
-                personalImage={myImage}
-                userId="홍길동"
-                upLoadTime="2024-11-04 04:54:24"
-                commentDetail="이렇게 하면 헬스왕이 될 수 있나요?"
-                replyCommentCount= {10}
-              />
-              <OthersComment
-                personalImage={myImage}
-                userId="홍길동"
-                upLoadTime="2024-11-04 04:54:24"
-                commentDetail="이렇게 하면 헬스왕이 될 수 있나요?"
-                replyCommentCount= {10}
-              />
+                {comments.map((comment) => (
+                  <OthersComment
+                    key={comment._id}
+                    parentId={comment._id} // 댓글의 고유 id
+                    personalImage={comment.userProfile} // 사용자 프로필 이미지
+                    userEmail = {comment.email}
+                    userId={comment.nickname} // 사용자 닉네임
+                    upLoadTime={new Date(comment.uploadDate).toLocaleDateString("ko-KR")} // 댓글 업로드 날짜
+                    commentDetail={comment.content} // 댓글 내용
+                    replyCommentCount={comment.replyCount || 0} // 대댓글 개수
+                  />
+                ))}
             </div>
+            
         </div>
     );
 };

@@ -71,11 +71,12 @@ const Main = () => {
       </Link>
 
       <div style={{ margin: 10 }}></div>
-      <div style={{ display: 'flex', gap: 39 }}>
+      <div style={{ display: 'flex', gap: 39 } }>
         {videos.map((video) => (
-          <div key={video.uuid} style={{cursor:"pointer"}} onClick={() => handleCardClick(video) }>
+          <div key={video._id} style={{cursor:"pointer"}} onClick={() => handleCardClick(video) }>
             <MediaCard
-              uuid={video.uuid}
+              key={video._id}
+              videoId={video._id}
               title={video.title}
               nickname={video.nickname}
               viewCount={video.viewCount}
