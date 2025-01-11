@@ -59,15 +59,15 @@ const Main = () => {
       <Link to={'/live'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>라이브</BasicButton>
       </Link>
-      <Link to={'/mypage/my'}>
+      <Link to={'/mypage/'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>마이페이지</BasicButton>
       </Link>
       <Link to={'/payment/cart'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>결제</BasicButton>
       </Link>
 
-      <Link to={'/myVideoManage'}>
-        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>영상</BasicButton>
+      <Link to={'/payment'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>tosstest</BasicButton>
       </Link>
 
       <div style={{ margin: 10 }}></div>

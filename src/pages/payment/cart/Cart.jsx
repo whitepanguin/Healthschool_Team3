@@ -44,14 +44,14 @@ const Cart = () => {
   console.log(stores);
   return (
     <div>
-      <Link to={"/"}>
+      <Link to={"/payment"}>
         <BasicButton
           size={"medium"}
           shape={"small"}
           variant={"primary"}
           color={"white"}
         >
-          메인
+          toss test
         </BasicButton>
       </Link>
       <S.ProgressWrapper>
