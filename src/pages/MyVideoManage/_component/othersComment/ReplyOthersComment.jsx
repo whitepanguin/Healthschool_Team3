@@ -4,12 +4,11 @@ import DeleteModal from './DelteModal';
 import CommentComponent from '../commentComponent/CommnentComponent';
 import ReplyComment from './ReplayInput';
 import { useSelector } from 'react-redux';
-const ReplyOthersComment = ({parentId,childId, personalImage, userId, upLoadTime, commentDetail, replyCommentCount, userEmail}) => {
+const ReplyOthersComment = ({parentId,childId, personalImage, userId, upLoadTime, commentDetail, replyCommentCount, userEmail,setReplies }) => {
     const [showModal, setShowModal] = useState(false);  // 모달의 표시 여부 상태
     const { currentUser, isLogin } = useSelector((state) => state.user); // user 상태 가져오기
     const [isReplying, setIsReplying] = useState(false); // 답글 입력 창 표시 여부
     const [showReplies, setShowReplies] = useState(false);  // 대댓글 표시 여부
-    const [replies, setReplies] = useState([]);  // 대댓글 상태
     const [loading, setLoading] = useState(false);  // 로딩 상태
     
       const handleDeleteClick = () => {
@@ -26,9 +25,12 @@ const ReplyOthersComment = ({parentId,childId, personalImage, userId, upLoadTime
           setLoading(true);
           const response = await fetch(`http://localhost:8000/videos/${parentId}/replies/${childId}`, {
             method: 'DELETE',
-            headers: {
+            headers: { 
               'Content-Type': 'application/json',
             },
+            body: JSON.stringify({
+              email: currentUser.email,
+            })
           });
     
           if (!response.ok) {
@@ -37,7 +39,10 @@ const ReplyOthersComment = ({parentId,childId, personalImage, userId, upLoadTime
     
           console.log(`${userId}님의 댓글이 삭제되었습니다.`);
           // 댓글 삭제 후 화면에서 해당 댓글 제거
-          setReplies((prevReplies) => prevReplies.filter(reply => reply.id !== childId)); // 댓글 ID로 삭제
+          const data = await response.json();
+          console.log("data", data);
+          setReplies(data);  // 대댓글 상태 업데이트
+        
     
           setShowModal(false); // 모달 닫기
         } catch (error) {
