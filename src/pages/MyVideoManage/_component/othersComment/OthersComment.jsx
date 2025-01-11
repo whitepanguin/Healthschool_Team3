@@ -49,7 +49,7 @@ const OthersComment = ({parentId, personalImage, userId, upLoadTime, commentDeta
       const handleCloseModal = () => {
         setShowModal(false); // 취소 클릭 시 모달 닫기
       };
-     
+      
         
    
       const handleCancelReply = () => {
@@ -74,7 +74,7 @@ const OthersComment = ({parentId, personalImage, userId, upLoadTime, commentDeta
             
             <div style={{ display: 'flex', margin: '10px 0 0 0', cursor: 'pointer' }} onClick={handleReplyClick}>
                 <img src={process.env.PUBLIC_URL + "/images/myVideoManage/comment.png"} alt='오류' />
-                <S.ViewCountAndEdit>{`${replyCommentCount}ㆍ답글 입력ㆍ더보기`}</S.ViewCountAndEdit>
+                <S.ViewCountAndEdit parentId={parentId}>{`${replyCommentCount}ㆍ답글 입력ㆍ더보기`}</S.ViewCountAndEdit>
             </div>
     
             {isReplying && (
@@ -84,6 +84,7 @@ const OthersComment = ({parentId, personalImage, userId, upLoadTime, commentDeta
                           replies.map((reply) => (
                               <ReplyOthersComment
                                   key={reply._id}  // key는 대댓글의 고유 id를 사용
+                                  childId={reply._id}  // key는 대댓글의 고유 id를 사용
                                   parentId={reply.parentCommentId}
                                   personalImage={reply.userProfile}
                                   userId={reply.nickname}
@@ -98,7 +99,7 @@ const OthersComment = ({parentId, personalImage, userId, upLoadTime, commentDeta
                       )}
                   </div>
                   <div style={{ marginTop: '10px' }}>
-                  <ReplyComment onCancel={handleCancelReply} />
+                  <ReplyComment parentId={parentId} setReplies={setReplies} setIsReplying={setIsReplying} />
                   </div>
                 </div>
             )}

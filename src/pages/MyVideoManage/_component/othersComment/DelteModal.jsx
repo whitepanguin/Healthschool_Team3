@@ -1,13 +1,13 @@
 import React from 'react';
 import S from './DeleteStyle'; // 스타일 컴포넌트
 // 확인 및 취소 버튼의 동작을 처리하는 컴포넌트
-const DeleteModal = ({ show, onClose, onConfirm, userId }) => {
+const DeleteModal = ({ show, onClose, onConfirm, commentId }) => {
   if (!show) return null; // show가 false일 경우 모달이 보이지 않도록 처리
 
   return (
     <S.ModalOverlay>
       <S.ModalContainer>
-        <S.ModalMessage>{`${userId}님의 댓글을 삭제할까요?`}</S.ModalMessage>
+        <S.ModalMessage>{`댓글을 삭제할까요?`}</S.ModalMessage>
         <S.ModalNotice>※한번 삭제한 댓글은 복구가 불가능 합니다※</S.ModalNotice>
 
         <hr/>

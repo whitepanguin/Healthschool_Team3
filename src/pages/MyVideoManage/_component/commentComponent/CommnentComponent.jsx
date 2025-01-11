@@ -47,7 +47,7 @@ const CommentComponent = ({videoId, onAddComment}) => {
           videoId: videoId,
           nickname: currentUser.name, // 
           email: currentUser.email, 
-          userProfile: currentUser.profile, // 사용자 프로필 이미지
+          userProfile: currentUser.profile||"http://localhost:8000/uploads/images/defaultProfile.jpg", // 사용자 프로필 이미지
           replyCount : 0,
         };
     
@@ -64,7 +64,7 @@ const CommentComponent = ({videoId, onAddComment}) => {
             },
             body: JSON.stringify(commentData), // 서버에 전송할 데이터
           });
-    
+          
           if (!response.ok) {
             throw new Error('댓글을 추가하는 데 실패했습니다.');
           }
@@ -89,7 +89,7 @@ const CommentComponent = ({videoId, onAddComment}) => {
   
     return (
         <S.CommentWrapper>
-            <S.UserImageWrapper src={currentUser.profile} />
+            <S.UserImageWrapper src={currentUser.profile||"http://localhost:8000/uploads/images/defaultProfile.jpg"} />
             <form ref={formRef} onSubmit={handleSubmit} method='POST' style={{display:'flex', flexDirection:'column'} } >
                 <S.CommentBox ref={commentBoxRef} contentEditable="true" onInput={handleInputChange}/>
                 <input type='hidden' name='comment' />
