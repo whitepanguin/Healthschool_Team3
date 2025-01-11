@@ -17,13 +17,19 @@ const OthersComment = ({parentId, personalImage, userId, upLoadTime, commentDeta
       try {
         setLoading(true);
         const response = await fetch(`http://localhost:8000/videos/${parentId}/replies`);
-        if (!response.ok) {
-          throw new Error('대댓글을 불러오는 데 실패했습니다.');
+        if (response.ok) {
+          const data = await response.json();
+          console.log("data", data);
+          setReplies(data);  // 대댓글 상태 업데이트
+    
+          // 대댓글이 없으면 콘솔에 메시지 출력
+          if (data.length === 0) {
+            console.log('대댓글이 없습니다.');
+          }
+        } else {
+          // 상태 코드가 200이 아닌 경우 처리
+          console.log('대댓글이 존재하지 않습니다.');
         }
-        const data = await response.json();
-        console.log("data", data)
-        setReplies(data);  // 대댓글 상태 업데이트
-      
       } catch (error) {
         console.error('대댓글 가져오기 오류:', error);
       } finally {
@@ -78,7 +84,7 @@ const OthersComment = ({parentId, personalImage, userId, upLoadTime, commentDeta
             </div>
     
             {isReplying && (
-                <div>
+                <div style={{marginLeft:'50px'}}>
                   <div style={{ marginTop: '10px' }}>
                       {replies.length > 0 ? (
                           replies.map((reply) => (
@@ -92,13 +98,14 @@ const OthersComment = ({parentId, personalImage, userId, upLoadTime, commentDeta
                                   upLoadTime={new Date(reply.uploadDate).toLocaleDateString("ko-KR")}  // 수정: uploadDate 사용
                                   commentDetail={reply.content}
                                   replyCommentCount={reply.likeCount}
+                                  setReplies={setReplies}
                               />
                           ))
                       ) : (
                           <p>대댓글이 없습니다.</p>  // 대댓글이 없을 경우 표시할 내용
                       )}
                   </div>
-                  <div style={{ marginTop: '10px' }}>
+                  <div style={{ marginTop: '10px'}}>
                   <ReplyComment parentId={parentId} setReplies={setReplies} setIsReplying={setIsReplying} />
                   </div>
                 </div>
