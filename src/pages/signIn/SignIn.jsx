@@ -5,6 +5,8 @@ import BasicCheckBox from '../../components/checkbox/BasicCheckBox';
 import BasicButton from '../../components/button/BasicButton';
 import S from './style';
 import { Link, useNavigate } from 'react-router-dom';
+import FindUser from './_component/findUser/FindUser';
+import FindPassword from './_component/FindPassword/FindPassword';
 
 const SignIn = () => {
   const [inputState, setInputState] = useState('');
@@ -13,23 +15,29 @@ const SignIn = () => {
 
   const [id, setId] = useState(''); // 아이디
   const [password, setPassword] = useState(''); // 비밀번호
+  const [isFindUserOpen, setIsFindUserOpen] = useState(false); // 모달 상태
+  const [isFindPasswordOpen, setIsFindPasswordOpen] = useState(false); // 모달 상태
 
   //
-  const naviagate = useNavigate();
+  const navigate = useNavigate();
 
 
   const locationGoogle = () => {
+    localStorage.removeItem("jwtToken")
     window.location.href = "http://localhost:8000/auth/google";
   }
   const locationKakao = () => {
+    localStorage.removeItem("jwtToken")
     window.location.href = "http://localhost:8000/auth/kakao";
   }
   const locationNaver = () => {
+    localStorage.removeItem("jwtToken")
     window.location.href = "http://localhost:8000/auth/naver";
   }
 
   //로그인 버튼 클릭
-  const hendleLogin = async () => {
+  const handleLogin = async () => {
+    localStorage.removeItem("jwtToken")
     try {
       const response = await fetch(`http://localhost:8000/auth/local`, {
         method: 'POST',
@@ -47,7 +55,7 @@ const SignIn = () => {
       if (response.ok) {
         alert(result.message || '로그인에 성공했습니다.');
         localStorage.setItem("jwtToken", result.jwtToken);
-        naviagate("/");
+        navigate("/");
       } else {
         throw new Error(result.message || '로그인에 실패했습니다.');
       }
@@ -103,7 +111,7 @@ const SignIn = () => {
           shape={'small'}
           variant={'primary'}
           color={'white'}
-          onClick={hendleLogin}
+          onClick={handleLogin}
         >로그인</BasicButton>
         <p>또는</p>
         <div>
@@ -118,10 +126,10 @@ const SignIn = () => {
           </S.IconButton>
         </div>
         <S.FindWrapper>
-          <Link>
+          <Link onClick={() => setIsFindUserOpen(true)}>
             <p>아이디 찾기</p>
           </Link>
-          <Link>
+          <Link onClick={() => setIsFindPasswordOpen(true)}>
             <p>비밀번호 찾기</p>
           </Link>
           <Link to={'/signUp'}>
@@ -129,6 +137,25 @@ const SignIn = () => {
           </Link>
         </S.FindWrapper>
       </S.ButtonWrapper >
+
+      {/* FindUser 모달 */}
+      {isFindUserOpen && (
+        <S.ModalContainer onClick={() => setIsFindUserOpen(false)}>
+          <S.ModalStyle onClick={(e) => e.stopPropagation()}>
+            <FindUser />
+          </S.ModalStyle>
+        </S.ModalContainer>
+      )}
+
+      
+      {/* FindPassword 모달 */}
+      {isFindPasswordOpen && (
+        <S.ModalContainer onClick={() => setIsFindPasswordOpen(false)}>
+          <S.ModalStyle onClick={(e) => e.stopPropagation()}>
+            <FindPassword />
+          </S.ModalStyle>
+        </S.ModalContainer>
+      )}
     </S.Container>
   );
 };

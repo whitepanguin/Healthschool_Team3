@@ -7,7 +7,6 @@ S.Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
 `;
 
 S.LogoWrapper = styled.div`
@@ -52,5 +51,27 @@ S.IconButton = styled.button`
     width: 100%;
   }
 `
+S.ModalContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 어두운 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* 모달 컨테이너 우선순위 */
+`;
+
+S.ModalStyle = styled.div`
+  background-color: #1a1b1e;
+  padding: 20px;
+  z-index: 1000;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px; /* 모달 너비 */
+  text-align: center;
+`;
 
 export default S;
