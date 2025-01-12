@@ -31,6 +31,7 @@ import Write from '../pages/myPage/_component/oftenQnA/Write';
 import Detail from '../pages/payment/Detail/Detail';
 import Success from '../pages/payment/Success/Success';
 import Failed from '../pages/payment/Failed/Failed';
+import NoticesPage from '../pages/help/_components/Notice/_componentsPages/NoticesPage';
 
 
 
@@ -62,6 +63,12 @@ const router = createBrowserRouter([
             // 자식 요소 예) http://localhost:3000/help/공지사항
             path : 'notice',
             element : <Notice />,
+            children: [
+              {
+                path : 'Noticepage',
+                element : <NoticesPage/>
+              }
+            ]
           },
         ]
       },
