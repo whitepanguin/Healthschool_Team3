@@ -75,7 +75,7 @@ const router = createBrowserRouter([
         element : <MyPage />,
         children : [
           {
-            index : true,
+            path : 'my',
             element : <My />,
           },
           {

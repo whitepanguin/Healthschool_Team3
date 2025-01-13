@@ -76,10 +76,3 @@ S.profileData = styled.p`
 
 
 export default S;
-
-
-
-// info: {
-//   textAlign: "left",
-//   fontSize: "16px"
-// }
