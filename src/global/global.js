@@ -30,6 +30,8 @@ const GlobalStyle = createGlobalStyle`
     border: 0px;
   }
 
+  
+
 
 `
 
