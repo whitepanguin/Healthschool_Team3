@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import S from './style';
 
 const NoticesPage = () => {
@@ -21,6 +21,9 @@ const NoticesPage = () => {
                     </div>
                 ))}
             </S.main>
+            <S.footer>
+                <Link to={"/help/notice"}><S.backButton >Back</S.backButton ></Link>
+            </S.footer>
         </div>
     );
 };
