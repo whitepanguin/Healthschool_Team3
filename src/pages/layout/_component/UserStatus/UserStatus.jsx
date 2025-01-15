@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BasicButton from '../../../../components/button/BasicButton';
 import S from './style';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, setUserStatus } from '../../../../modules/user';
 
@@ -9,6 +9,7 @@ const UserStatus = () => {
     // 로그인전, 로그인후, 로그인후(강사)
     const { isLogin, currentUser } = useSelector(state => state.user);
     const { name, isTeacher, profile } = currentUser
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     //알람확인
     const [alarm, setAlarm] = useState([]);
@@ -17,6 +18,7 @@ const UserStatus = () => {
         localStorage.removeItem("jwtToken")
         dispatch(setUser({}))
         dispatch(setUserStatus(false))
+        navigate("/");
     }
 
     return (
