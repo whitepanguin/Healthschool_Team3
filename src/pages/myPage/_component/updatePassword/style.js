@@ -50,6 +50,12 @@ S.ButtonWrapper = styled.div`
   gap: 30px;
 `
 
+S.ErrorMessage = styled.div`
+  margin-top: 5px;
+  font-size: 14px;
+  color: #FF0000;
+`;
+
 
 
 
