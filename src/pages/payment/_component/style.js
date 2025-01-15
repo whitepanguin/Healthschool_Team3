@@ -165,4 +165,15 @@ S.Arrow = styled.span`
   color: #888;
 `;
 
+S.Addit = styled.div`
+.active {
+  color: #4caf50; /* Change text color when active */
+  font-weight: bold; /* Make the text bold when active */
+  /* You can add other styles as needed */
+  }
+  p {
+    color: ${(props) => (props.active ? '' : '#888')};
+  }
+`;
+
 export default S;

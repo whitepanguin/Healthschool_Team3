@@ -63,13 +63,11 @@ const router = createBrowserRouter([
             // 자식 요소 예) http://localhost:3000/help/공지사항
             path : 'notice',
             element : <Notice />,
-            children: [
-              {
-                path : 'Noticepage',
-                element : <NoticesPage/>
-              }
-            ]
           },
+          {
+            path : 'notice/noticepages',
+            element : <NoticesPage/>
+          }
         ]
       },
 
@@ -82,7 +80,7 @@ const router = createBrowserRouter([
         element : <MyPage />,
         children : [
           {
-            index : true,
+            path : 'my',
             element : <My />,
           },
           {

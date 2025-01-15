@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import S from './style';
+import { Link } from 'react-router-dom';
 
 const Notice = () => {
     const [notices, setNotices] = useState([]); // 공지사항 데이터를 저장
@@ -47,7 +48,6 @@ const Notice = () => {
         acc[curr.title].push(curr);
         return acc;
     }, {});
-    console.log(groupedNotices)
     return (
         <div>
             <S.Header>
@@ -56,18 +56,20 @@ const Notice = () => {
                 </S.title>
             </S.Header>
             <S.Main>
-                {Object.keys(groupedNotices).map((topic, index) => (
-                    <S.Notice key={index}>
-                        <S.Topic>
-                            <S.h4>{topic}</S.h4>
-                        </S.Topic>
-                        {groupedNotices[topic].map((notice, idx) => (
-                            <S.NoticeBox key={idx} onClick={() => handleClick(notice.title)}>
-                            <p>{notice.content}</p>
-                            </S.NoticeBox>
-                        ))}
-                        <img src={process.env.PUBLIC_URL + `/images/help/right.png`} alt="" />
-                    </S.Notice>
+                {Object.keys(groupedNotices).map((topic, index,arr) => (
+                  <Link to="/help/notice/noticepages" state={{ topic, groupedNotices,arr}}>
+                        <S.Notice key={index}>
+                            <S.Topic>
+                                <S.h4>{topic}</S.h4>
+                            </S.Topic>
+                            {groupedNotices[topic].map((notice, idx) => (
+                                <S.NoticeBox key={idx} onClick={() => handleClick(notice.title)}>
+                                <p>{notice.content}</p>
+                                </S.NoticeBox>
+                            ))}
+                            <img src={process.env.PUBLIC_URL + `/images/help/right.png`} alt="" />
+                        </S.Notice>
+                    </Link>
                 ))}
             </S.Main>
         </div>

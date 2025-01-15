@@ -167,5 +167,11 @@ S.Arrow = styled.span`
   margin: 0 8px;
   color: #888;
 `;
+S.buttonNext = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px; /* 오른쪽으로부터 20px 간격 */
+`;
+
 
 export default S;

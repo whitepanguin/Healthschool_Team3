@@ -1,10 +1,18 @@
 import React from 'react';
 import S from './style';
+import { Link } from 'react-router-dom';
 
 const Transaction = () => {
   return (
     <S.Container>
       {/* 이미지 및 설명 */}
+      <S.ProgressWrapper>
+        <Link to={"/payment/failed"}><S.ProgressStep>장바구니</S.ProgressStep></Link>
+        <S.Arrow>{">"}</S.Arrow>
+        <Link to={"/payment/failed"}><S.ProgressStep>주문/결제</S.ProgressStep></Link>
+        <S.Arrow>{">"}</S.Arrow>
+        <Link to={"/payment/transaction"}><S.ProgressStep active>완료</S.ProgressStep></Link>
+      </S.ProgressWrapper>
       <S.ImageBox>
         <S.Image src="https://via.placeholder.com/600x300" alt="운동 이미지" />
         <S.TextBox>

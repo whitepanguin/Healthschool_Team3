@@ -7,6 +7,11 @@ S.Wrapper = styled.div`
   background-color: #111;
   color: #fff;
 `;
+S.boxbox = styled.div`
+position: relative; 
+top: 240px;
+right: 10px;
+`;
 
 S.Header = styled.div`
   display: flex;
@@ -163,6 +168,12 @@ S.ProgressStep = styled.span`
 S.Arrow = styled.span`
   margin: 0 8px;
   color: #888;
+`;
+
+S.buttonNext = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px; /* 오른쪽으로부터 20px 간격 */
 `;
 
 export default S;
