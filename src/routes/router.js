@@ -31,6 +31,7 @@ import Write from '../pages/myPage/_component/oftenQnA/Write';
 import Detail from '../pages/payment/Detail/Detail';
 import Success from '../pages/payment/Success/Success';
 import Failed from '../pages/payment/Failed/Failed';
+import NoticesPage from '../pages/help/_components/Notice/_componentsPages/NoticesPage';
 
 
 
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
             path : 'notice',
             element : <Notice />,
           },
+          {
+            path : 'notice/noticepages',
+            element : <NoticesPage/>
+          }
         ]
       },
 
