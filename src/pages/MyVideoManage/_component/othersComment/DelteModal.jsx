@@ -1,7 +1,7 @@
 import React from 'react';
 import S from './DeleteStyle'; // 스타일 컴포넌트
 // 확인 및 취소 버튼의 동작을 처리하는 컴포넌트
-const DeleteModal = ({ show, onClose, onConfirm, commentId }) => {
+const DeleteModal = ({ show, onClose, onConfirm, commentId , handleMinusReply }) => {
   if (!show) return null; // show가 false일 경우 모달이 보이지 않도록 처리
 
   return (
@@ -13,7 +13,7 @@ const DeleteModal = ({ show, onClose, onConfirm, commentId }) => {
         <hr/>
         <div style={{ display: 'flex', justifyContent:'flex-end', marginTop:'30px', gap:'10px'}}>
           <S.CancelButton onClick={onClose}>취소</S.CancelButton>
-          <S.ConfirmButton onClick={onConfirm}>확인</S.ConfirmButton>
+          <S.ConfirmButton onClick={onConfirm} >확인</S.ConfirmButton>
         </div>
       </S.ModalContainer>
     </S.ModalOverlay>

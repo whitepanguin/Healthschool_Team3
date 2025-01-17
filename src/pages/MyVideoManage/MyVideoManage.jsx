@@ -29,6 +29,7 @@ const MyVideoManage = () => {
     const [loading, setLoading] = useState(true); // 로딩 상태
   
     const videoId = videoDataFromMediaCard._id; // 동영상 ID
+    console.log("videoUrl :",videoDataFromMediaCard.videoUrl)
     console.log("video ID= ", videoId)
     // 아래 videoData는 임시 데이터로 선언된 것임
     const videoData = [

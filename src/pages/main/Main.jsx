@@ -43,7 +43,7 @@ const Main = () => {
 
   // 동영상 카드 클릭 시 navigate로 데이터 전달
   const handleCardClick = (video) => {
-    navigate('/myVideoManage', {
+    navigate(`/myVideoManage/${video._id}`, {
       state: { ...video }, // 모든 데이터 전달
     });
   };

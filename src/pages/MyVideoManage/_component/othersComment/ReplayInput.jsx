@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import S from './ReplyComment'
 import { useSelector } from 'react-redux';
-const ReplyComment = ({ onCancel, parentId, setReplies, setIsReplying}) => {
+const ReplyComment = ({ onCancel, parentId, setReplies, setIsReplying, onAddReply}) => {
     const [replyCommentText, setReplyCommentText] = useState(''); // 텍스트 상태 관리
     const commentBoxRef = useRef(null); // contenteditable div 참조
     const formRef = useRef(null); // 폼 참조
@@ -51,6 +51,7 @@ const ReplyComment = ({ onCancel, parentId, setReplies, setIsReplying}) => {
         const newReply = await response.json();  // 서버에서 반환된 대댓글 정보
           // 대댓글이 성공적으로 추가되면, 그 대댓글을 replies 상태에 추가
         setReplies((prevReplies) => [...prevReplies, newReply]);
+        onAddReply(newReply)
         commentBoxRef.current.innerText = ''
         setReplyCommentText('');
       } catch (error) {
