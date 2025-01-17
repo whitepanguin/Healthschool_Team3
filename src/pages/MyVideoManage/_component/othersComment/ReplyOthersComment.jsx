@@ -4,7 +4,7 @@ import DeleteModal from './DelteModal';
 import CommentComponent from '../commentComponent/CommnentComponent';
 import ReplyComment from './ReplayInput';
 import { useSelector } from 'react-redux';
-const ReplyOthersComment = ({parentId,childId, personalImage, userId, upLoadTime, commentDetail, replyCommentCount, userEmail,setReplies }) => {
+const ReplyOthersComment = ({parentId,childId, personalImage, userId, upLoadTime, commentDetail, replyCommentCount, userEmail,setReplies,setReplyCount }) => {
     const [showModal, setShowModal] = useState(false);  // 모달의 표시 여부 상태
     const { currentUser, isLogin } = useSelector((state) => state.user); // user 상태 가져오기
     const [isReplying, setIsReplying] = useState(false); // 답글 입력 창 표시 여부
@@ -41,9 +41,8 @@ const ReplyOthersComment = ({parentId,childId, personalImage, userId, upLoadTime
           // 댓글 삭제 후 화면에서 해당 댓글 제거
           const data = await response.json();
           console.log("data", data);
-          setReplies(data);  // 대댓글 상태 업데이트
-        
-    
+          setReplies(prevReplies => prevReplies.filter(reply => reply._id !== childId)); // 삭제된 대댓글 제외
+          setReplyCount(prevCount => prevCount - 1); // 삭제된 대댓글에 맞게 replyCount 업데이트
           setShowModal(false); // 모달 닫기
         } catch (error) {
           console.error('댓글 삭제 에러:', error);
