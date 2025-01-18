@@ -58,12 +58,17 @@ const Cart = () => {
   const handleCheckboxChange = (id, isChecked) => {
     setSelectedIds((prev) =>
       prev.includes(id) ? prev.filter((_id) => _id !== id) : [...prev, id]
-    );
+    );  
   };
   const handleCheckboxoptionChange = (id, isChecked) => {
     setSelectedOptions((prev) =>
       prev.includes(id) ? prev.filter((_id) => _id !== id) : [...prev, id]
     );
+    if(!selectedIds.includes(id)){
+      setSelectedIds((prev) =>
+        prev.includes(id) ? prev.filter((_id) => _id !== id) : [...prev, id]
+      );
+    }  
   };
 
   const handleNextClick = () => {
@@ -85,10 +90,8 @@ const Cart = () => {
   };
 
   const handlestoreClick = () => {
-    // console.log("작동중")
-    // console.log(options)
-    // console.log(selectedOptions)
-    };
+
+  };
 
   if (loading) {
     return <div>Loading...</div>; // 로딩 중일 때
@@ -137,7 +140,7 @@ const Cart = () => {
           <div key={store._id}>
             <S.boxbox>
               <BasicCheckBox
-                checked={selectedIds.includes(store._id)}
+                checked={selectedIds.includes(store._id)||selectedOptions.includes(store._id)}
                 onChange={() => handleCheckboxChange(store._id)}
               />
             </S.boxbox>

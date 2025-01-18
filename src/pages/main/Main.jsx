@@ -65,8 +65,7 @@ const Main = () => {
       <Link to={'/payment/cart'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>결제</BasicButton>
       </Link>
-
-      <Link to={'/payment'}>
+      <Link to={'/payment/history'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>tosstest</BasicButton>
       </Link>
 

@@ -14,7 +14,6 @@ import IndividualQuestion from '../pages/help/_components/IndividualQuestion/Ind
 import PopularQuestion from '../pages/help/_components/PopularQuestion/PopularQuestion';
 import Address from '../pages/payment/address/Address';
 import Info from '../pages/payment/info/Info';
-import Transaction from '../pages/payment/transaction/Transaction';
 import Cart from '../pages/payment/cart/Cart';
 import MyVideoManage from '../pages/MyVideoManage/MyVideoManage';
 import Profile from '../pages/myPage/_component/profile/Profile';
@@ -32,6 +31,7 @@ import Detail from '../pages/payment/Detail/Detail';
 import Success from '../pages/payment/Success/Success';
 import Failed from '../pages/payment/Failed/Failed';
 import NoticesPage from '../pages/help/_components/Notice/_componentsPages/NoticesPage';
+import History from '../pages/payment/history/History';
 
 
 
@@ -142,8 +142,8 @@ const router = createBrowserRouter([
             element : <Cart />,
           },
           {
-            path : 'transaction',
-            element : <Transaction />,
+            path : 'history',
+            element : <History />,
           },
           {
             path : 'info',
