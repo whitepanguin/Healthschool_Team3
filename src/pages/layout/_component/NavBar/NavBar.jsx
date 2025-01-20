@@ -3,6 +3,7 @@ import S from './style';
 import BasicButton from '../../../../components/button/BasicButton';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { setUser } from '../../../../modules/user';
 
 // 메인 매뉴
 const Menus = [
@@ -89,11 +90,21 @@ const NavBar = () => {
     const { isLogin, currentUser } = useSelector(state => state.user);
     const { name, isTeacher, profile } = currentUser
     const dispatch = useDispatch();
+    const defaultProfileImg = process.env.PUBLIC_URL + '/images/profile/defaultProfile.jpg';
+    const profileImgSrc = profile ? `http://localhost:8000/${profile}` : defaultProfileImg; 
 
     useEffect(() => {
         console.log("🚀 ~ NavBar ~ location:", location);
         setIsMyPage(['/mypage', '/help', '/live'].some((path) => location.pathname.includes(path)));
     }, [location]);
+
+    // ✅ 프로필 이미지 업데이트 감지
+    useEffect(() => {
+        const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+        if (storedUser && storedUser.profile !== currentUser.profile) {
+            dispatch(setUser(storedUser));
+        }
+    }, [currentUser.profile, dispatch]);
 
 
     const handleMyMenuClick = (path) => {
@@ -121,7 +132,7 @@ const NavBar = () => {
                 <>
                     <S.ProfileSection>
                         <S.ProfileImage>
-                            <S.Profile src={profile == ''? process.env.PUBLIC_URL + `/images/profile/defaultProfile.jpg`: profile } alt={'#'} />
+                            <S.Profile src={profileImgSrc} alt="프로필 이미지" />
                         </S.ProfileImage>
                         <S.ProfileName>{name} 회원님</S.ProfileName>
                         {isTeacher &&

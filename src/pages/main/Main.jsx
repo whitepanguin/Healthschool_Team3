@@ -70,9 +70,9 @@ const Main = () => {
       </Link>
 
       <div style={{ margin: 10 }}></div>
-      <div style={{ display: 'flex', gap: 39 } }>
+      <div style={{ display: 'grid', gridTemplateColumns : ' 1fr 1fr 1fr 1fr', gap : '30px'} }>
         {videos.map((video) => (
-          <div key={video._id} style={{cursor:"pointer"}} onClick={() => handleCardClick(video) }>
+          <div key={video._id} style={{cursor:"pointer", }} onClick={() => handleCardClick(video) }>
             <MediaCard
               key={video._id}
               videoId={video._id}
