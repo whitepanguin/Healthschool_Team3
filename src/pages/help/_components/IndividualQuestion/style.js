@@ -13,7 +13,8 @@ S.Header = styled.header`
 
 
 S.Main = styled.main`
-
+    width: 100%;
+    height: 60%;
 `
 
 S.Notice = styled.div`
@@ -34,7 +35,7 @@ S.Topic = styled.div`
 
 S.title = styled.div`
     width : 50%;
-    heigth : 70px;
+    height : 70px;
     padding : 10px 20px;
     border-radius : 30px;
     border : 1px solid #fff;
@@ -61,7 +62,7 @@ S.Account = styled.div`
     height : 600px;
     display : flex;
     flex-direction : column;
-    justify-content : center;
+    justify-content : space-around;
     gap : 20px;
     align-items: center;
 `
