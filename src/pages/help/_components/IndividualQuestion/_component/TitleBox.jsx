@@ -13,10 +13,41 @@ const TitleBox = () => {
         setContent(''); // 내용 상태 초기화
     };
 
+
+
+    const onSubmit = async () => {
+
+        console.log(title)
+        console.log(content)
+        console.log(currentUser.email)
+        try {
+          const response = await fetch("http://localhost:8000/help/postchat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                title : title,
+                content : content,
+                email: currentUser.email,
+            }),
+          });
+    
+          const result = await response.json();
+          console.log("서버 응답:", result);
+          
+    
+        } catch (err) {
+          console.error("주소 수정 요청 실패:", err);
+          alert("서버 오류로 인해 수정에 실패했습니다.");
+        }
+      };
+
+
+
     console.log(currentUser)
     return (
         <S.Wrap>
-            <S.form method='POST'>
                 <S.TitleInputBox 
                     type="text" 
                     placeholder="제목을 입력해주세요"
@@ -32,9 +63,8 @@ const TitleBox = () => {
                 />
                 <S.CancelOrSubmit>
                     <S.CancelBtn onClick={resetFields} type="button">취소</S.CancelBtn>
-                    <S.SubmitBtn type="submit">작성</S.SubmitBtn>
+                    <S.SubmitBtn onClick ={onSubmit}>작성</S.SubmitBtn>
                 </S.CancelOrSubmit>
-            </S.form>
         </S.Wrap>
     );
 };

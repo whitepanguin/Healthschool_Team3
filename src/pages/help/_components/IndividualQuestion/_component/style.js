@@ -5,6 +5,10 @@ const S  = {}
 S.Wrap = styled.div`
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 
 `
 S.form = styled.form`

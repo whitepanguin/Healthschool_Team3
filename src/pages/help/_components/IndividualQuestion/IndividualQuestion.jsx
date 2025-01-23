@@ -1,11 +1,42 @@
 // IndividualQuestion.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './style';
 import { Outlet } from 'react-router-dom';
-import InputBox from '../../../../components/Input/InputBox/InputBox';
 import TitleBox from './_component/TitleBox';
+import { useSelector } from 'react-redux';
 
 const IndividualQuestion = () => {
+    const { currentUser } = useSelector((state) => state.user);
+    const [postChats, setPostChats] = useState([]);  // 상태 추가
+
+    const getPostChat = async () => {
+        console.log(currentUser.email);
+        try {
+            const response = await fetch('http://localhost:8000/help/getPostChat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: currentUser.email,
+                }),
+            });
+            const result = await response.json();
+            console.log("result", result);
+            if (response.ok) {
+                setPostChats(result);  // 받은 데이터를 상태에 저장
+            } else {
+                // 에러 처리
+            }
+        } catch (error) {
+            console.error("Error fetching postChats:", error);
+        }
+    };
+
+    useEffect(() => {
+        getPostChat();  // 컴포넌트가 처음 렌더링될 때 호출
+    }, [currentUser.email]);  // currentUser.email이 변경될 때마다 호출
+
     return (
         <div>
             <S.Header>
@@ -15,13 +46,26 @@ const IndividualQuestion = () => {
             </S.Header>
             <h3>상세보기</h3>
             <hr />
+            <div id="Questions">
+                {postChats.length > 0 ? (
+                    postChats.map((postChat) => (
+                        <div key={postChat._id}>
+                            <h4>Title: {postChat.title}</h4>
+                            <p>Content: {postChat.content}</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>문의 내용이 없습니다.</p> // 데이터를 받지 못했을 때 표시
+                )}
+            </div>
             <S.Main>
                 <S.Account>
-                  <TitleBox/>
+                    <TitleBox />
                 </S.Account>
             </S.Main>
             <Outlet />
         </div>
     );
 };
+
 export default IndividualQuestion;
