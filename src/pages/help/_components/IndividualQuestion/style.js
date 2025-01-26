@@ -97,4 +97,27 @@ S.SubmitBtn = styled.button`
 `
 
 
+S.ViewDetails = styled.h3`
+    width: 100px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3D6AFF;
+    box-shadow: 2px 2px 2px rgba(225, 225, 225, 0.7);
+    border-radius: 8px ;
+  &:hover{
+   background-color: blue;
+   cursor: pointer;
+  }
+`
+
+
+S.ContentBox = styled.div`
+  width: 100%;
+  height: 50px;
+  border: 1px solid #fff;
+  margin-bottom : 10px;
+`
+
 export default S ;
