@@ -69,6 +69,9 @@ const Main = () => {
       <Link to={'/payment'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>tosstest</BasicButton>
       </Link>
+      <Link to={'/videoupload'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>비디오 업로드</BasicButton>
+      </Link>
 
       <div style={{ margin: 10 }}></div>
       <div style={{ display: 'flex', gap: 39 } }>
