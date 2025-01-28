@@ -65,8 +65,7 @@ const Main = () => {
       <Link to={'/payment/cart'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>결제</BasicButton>
       </Link>
-
-      <Link to={'/payment'}>
+      <Link to={'/payment/history'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>tosstest</BasicButton>
       </Link>
       <Link to={'/videoupload'}>
@@ -74,9 +73,9 @@ const Main = () => {
       </Link>
 
       <div style={{ margin: 10 }}></div>
-      <div style={{ display: 'flex', gap: 39 } }>
+      <div style={{ display: 'grid', gridTemplateColumns : ' 1fr 1fr 1fr 1fr', gap : '30px'} }>
         {videos.map((video) => (
-          <div key={video._id} style={{cursor:"pointer"}} onClick={() => handleCardClick(video) }>
+          <div key={video._id} style={{cursor:"pointer", }} onClick={() => handleCardClick(video) }>
             <MediaCard
               key={video._id}
               videoId={video._id}

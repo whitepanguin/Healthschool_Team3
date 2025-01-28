@@ -29,6 +29,12 @@ const S = {};
     border-radius: 50%;
   `
 
+  S.Detail = styled.h3`
+    text-align: center;
+    margin-top: 20px;
+    font-size: large;
+  `
+
   S.Button = styled.button`
     cursor: pointer;
     width: 200px;
