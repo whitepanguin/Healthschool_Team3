@@ -13,7 +13,7 @@ const SignUp = () => {
     confirmPassword: '',
     name: '',
     birthDate: '',
-    nickname: ''
+    nickName: ''
   });
 
   const [inputStates, setInputStates] = useState({
@@ -22,7 +22,7 @@ const SignUp = () => {
     confirmPassword: '',
     name: '',
     birthDate: '',
-    nickname: ''
+    nickName: ''
   });
 
   const [errors, setErrors] = useState({
@@ -31,7 +31,7 @@ const SignUp = () => {
     confirmPassword: '',
     name: '',
     birthDate: '',
-    nickname: ''
+    nickName: ''
   });
 
   const handleChange = (field) => (e) => {
@@ -107,12 +107,12 @@ const SignUp = () => {
     }
 
     // 닉네임 유효성 확인
-    if (!formValues.nickname.trim()) {
-      newErrors.nickname = '닉네임을 입력해주세요.';
-      newStates.nickname = 'error';
+    if (!formValues.nickName.trim()) {
+      newErrors.nickName = '닉네임을 입력해주세요.';
+      newStates.nickName = 'error';
       isValid = false;
     } else {
-      newStates.nickname = 'success';
+      newStates.nickName = 'success';
     }
 
     setErrors(newErrors);
@@ -123,7 +123,7 @@ const SignUp = () => {
   const handleSubmit = async () => {
     if (validate()) {
       console.log('Form Values:', formValues);
-      const { email, password, name, birthDate, nickname } = formValues
+      const { email, password, name, birthDate, nickName } = formValues
       try {
         const response = await fetch(`http://localhost:8000/users/register`, {
           method: "POST",
@@ -135,7 +135,7 @@ const SignUp = () => {
             password: password,
             name: name,
             birthDate: birthDate,
-            nickname: nickname,
+            nickName: nickName,
           }),
         });
         const result = await response.json(); // JSON으로 변환
@@ -210,11 +210,11 @@ const SignUp = () => {
         <BasicInput
           width={'336px'}
           height={'43px'}
-          state={inputStates.nickname}
-          errorText={errors.nickname}
+          state={inputStates.nickName}
+          errorText={errors.nickName}
           susccessText={''}
           placeHolderText={'닉네임'}
-          onChange={handleChange('nickname')}
+          onChange={handleChange('nickName')}
         />
         <S.ButtonWrapper>
           <BasicButton

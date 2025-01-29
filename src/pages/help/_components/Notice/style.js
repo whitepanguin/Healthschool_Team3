@@ -34,7 +34,7 @@ S.Topic = styled.div`
 
 S.title = styled.div`
     width : 50%;
-    heigth : 70px;
+    height : 70px;
     padding : 10px 20px;
     border-radius : 30px;
     border : 1px solid #fff;
@@ -88,11 +88,6 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 `
-S.DeleteImg = styled.img`
-    width: 50px;
-    height: 50px;
-` 
-
 
 S.InputCheck = styled.input.attrs({ type: 'checkbox' })`
     width : 25px;

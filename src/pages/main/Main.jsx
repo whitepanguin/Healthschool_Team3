@@ -45,7 +45,7 @@ const Main = () => {
 
   // 동영상 카드 클릭 시 navigate로 데이터 전달
   const handleCardClick = (video) => {
-    navigate('/myVideoManage', {
+    navigate(`/myVideoManage/${video._id}`, {
       state: { ...video }, // 모든 데이터 전달
     });
   };
@@ -61,20 +61,22 @@ const Main = () => {
       <Link to={'/live'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>라이브</BasicButton>
       </Link>
-      <Link to={'/mypage/my'}>
+      <Link to={'/mypage/'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>마이페이지</BasicButton>
       </Link>
       <Link to={'/payment/cart'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>결제</BasicButton>
       </Link>
-
-      <Link to={'/myVideoManage'}>
-        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>영상</BasicButton>
+      <Link to={'/payment/history'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>tosstest</BasicButton>
+      </Link>
+      <Link to={'/videoupload'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>비디오 업로드</BasicButton>
       </Link>
       <div style={{ margin: 10 }}></div>
-      <div style={{ display: 'flex', gap: 39 } }>
+      <div style={{ display: 'grid', gridTemplateColumns : ' 1fr 1fr 1fr 1fr', gap : '30px'} }>
         {videos.map((video) => (
-          <div key={video._id} style={{cursor:"pointer"}} onClick={() => handleCardClick(video) }>
+          <div key={video._id} style={{cursor:"pointer", }} onClick={() => handleCardClick(video) }>
             <MediaCard
               key={video._id}
               videoId={video._id}

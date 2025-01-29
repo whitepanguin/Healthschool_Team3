@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import S from "./style";
 import MediaCard from "../../../components/mediaCard/MediaCard";
 import BasicCheckBox from "../../../components/checkbox/BasicCheckBox";
@@ -19,13 +19,28 @@ const Card = ({
   PayDate, 
   tags, 
   imageUrl,
-  uuid
+  uuid,
+  checked,
+  onCheckboxChange
 }) => {
+  // State to manage checkbox
+  const [isChecked, setIsChecked] = useState(false);
+
+  // Handle checkbox change
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+    onCheckboxChange()
+    checked();
+  };
+
+
+  // Calculate the total price based on checkbox state
+  const totalPrice = isChecked ? additionPrice + productPrice : productPrice;
+
   return (
     <div>
       <S.Container>
         <S.Button>
-          <BasicCheckBox />
           <S.Card>
             <MediaCard
               title={title}
@@ -44,31 +59,26 @@ const Card = ({
               </p>
             </S.ContentSection>
             <S.PriceSection>
-              <div>
-                <p>추가 선택상품 금액</p>
-                <p>+{additionTitle}</p>
-                <p>+{additionPrice}원</p>
-              </div>
+              <S.Addit>
+                <p className={isChecked ? "active" : ""}>추가 선택상품 금액</p>
+                <p className={isChecked ? "active" : ""}>+{additionTitle}</p>
+                <p className={isChecked ? "active" : ""}>+{additionPrice.toLocaleString('ko-KR')}원</p>
+                <BasicCheckBox 
+                  label="추가 상품 선택" 
+                  checked={isChecked} 
+                  onChange={handleCheckboxChange} 
+                />
+              </S.Addit>
               <div>
                 <p>상품금액</p>
-                <p>{productPrice}원</p>
+                <p>{productPrice.toLocaleString('ko-KR')}원</p>
               </div>
-              <Link to={"/payment/address"}>
-                <BasicButton
-                  size={"medium"}
-                  shape={"small"}
-                  variant={"primary"}
-                  color={"white"}
-                >
-                  주문 수정
-                </BasicButton>
-              </Link>
             </S.PriceSection>
             <S.PriceTotal>
-              <div>
-                <p>Total Price</p>
-                <p>{additionPrice+productPrice}원</p>
-              </div>
+              <S.Addit>
+                <p className={isChecked ? "active" : ""}>Total Price</p>
+                <p className={isChecked ? "active" : ""}>{totalPrice.toLocaleString('ko-KR')}원</p>
+              </S.Addit>
             </S.PriceTotal>
           </S.Card>
         </S.Button>

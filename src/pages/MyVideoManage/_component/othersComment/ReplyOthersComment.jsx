@@ -3,20 +3,52 @@ import S from './style'
 import DeleteModal from './DelteModal';
 import CommentComponent from '../commentComponent/CommnentComponent';
 import ReplyComment from './ReplayInput';
-const ReplyOthersComment = ({parentId, personalImage, userId, upLoadTime, commentDetail, replyCommentCount, userEmail}) => {
+import { useSelector } from 'react-redux';
+const ReplyOthersComment = ({parentId,childId, personalImage, userId, upLoadTime, commentDetail, replyCommentCount, userEmail,setReplies,setReplyCount }) => {
     const [showModal, setShowModal] = useState(false);  // 모달의 표시 여부 상태
+    const { currentUser, isLogin } = useSelector((state) => state.user); // user 상태 가져오기
     const [isReplying, setIsReplying] = useState(false); // 답글 입력 창 표시 여부
     const [showReplies, setShowReplies] = useState(false);  // 대댓글 표시 여부
-    const [replies, setReplies] = useState([]);  // 대댓글 상태
     const [loading, setLoading] = useState(false);  // 로딩 상태
     
       const handleDeleteClick = () => {
         setShowModal(true); // "삭제" 버튼 클릭 시 모달 표시
       };
-
-      const handleConfirmDelete = () => {
-        console.log(`${userId}님의 댓글이 삭제되었습니다.`);
-        setShowModal(false); // 삭제 확인 후 모달 닫기
+      
+      const handleConfirmDelete = async () => {
+        if(currentUser.email !==userEmail){
+          alert("삭제할 권한이 없습니다. 자신이 작성한 댓글만 삭제할 수 있습니다.");
+          setShowModal(false);
+          return;
+        }
+        try {
+          setLoading(true);
+          const response = await fetch(`http://localhost:8000/videos/${parentId}/replies/${childId}`, {
+            method: 'DELETE',
+            headers: { 
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: currentUser.email,
+            })
+          });
+    
+          if (!response.ok) {
+            throw new Error('댓글 삭제 실패');
+          }
+    
+          console.log(`${userId}님의 댓글이 삭제되었습니다.`);
+          // 댓글 삭제 후 화면에서 해당 댓글 제거
+          const data = await response.json();
+          console.log("data", data);
+          setReplies(prevReplies => prevReplies.filter(reply => reply._id !== childId)); // 삭제된 대댓글 제외
+          setReplyCount(prevCount => prevCount - 1); // 삭제된 대댓글에 맞게 replyCount 업데이트
+          setShowModal(false); // 모달 닫기
+        } catch (error) {
+          console.error('댓글 삭제 에러:', error);
+        } finally {
+          setLoading(false);
+        }
       };
     
       const handleCloseModal = () => {
@@ -45,7 +77,6 @@ const ReplyOthersComment = ({parentId, personalImage, userId, upLoadTime, commen
                 show={showModal}
                 onClose={handleCloseModal}
                 onConfirm={handleConfirmDelete}
-                message={`${userId}님의 댓글을 삭제할까요?`}
             />
         </div>
     );
