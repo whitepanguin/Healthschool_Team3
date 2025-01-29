@@ -1,7 +1,13 @@
 import React from 'react';
 import S from './style';
+import { useNavigate } from 'react-router-dom';
 
-const OftenQnA = ({label}) => {
+const OftenQnA = ({label, uri}) => {
+
+  const navigate = useNavigate();
+    const onCLickToLink = () => {
+        navigate(`${uri}`)
+    }
 
   const qaList = [
     { question: "자주 물어보는 질문 1", date: "2024-06-10", views: 123 },
@@ -16,7 +22,7 @@ const OftenQnA = ({label}) => {
 
   return (
     <div>
-    <h2 style={{fontSize : 24, marginBottom : 60}}>{`${label} >`}</h2>
+    <h2 onClick={onCLickToLink} style={{fontSize : 24, marginBottom : 60, cursor : "pointer"}}>{`${label} >`}</h2>
     <S.Container>
       {/* 왼쪽 컬럼 */}
       <S.Column>

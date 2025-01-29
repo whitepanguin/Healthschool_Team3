@@ -1,7 +1,7 @@
 import styled from "styled-components";
 const S = {};
 S.CommentWrapper = styled.div`
-    width: 1500px;
+    width: 1450px;
     display: flex;
     position: relative;
 `
@@ -16,7 +16,7 @@ S.InputBox = styled.input`
     height: 160px;  
 `
 S.CommentBox = styled.div`
-  width: 1200px;
+  width: 1150px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;

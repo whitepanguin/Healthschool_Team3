@@ -2,7 +2,7 @@ import React from 'react';
 import S from './style';
 import BasicTag from '../tag/BasicTag';
 
-const MediaCard = ({ title, date, description,nickname,viewCount, likeCount,videoUrl, imageUrl, instructor, tags ,uuid }) => {
+const MediaCard = ({ title, date, description,nickname,viewCount, likeCount,videoUrl, imageUrl, instructor, tags ,id }) => {
     return (
         <S.CardContainer>
             <S.ImageWrapper>
@@ -13,7 +13,7 @@ const MediaCard = ({ title, date, description,nickname,viewCount, likeCount,vide
             </S.ImageWrapper>
             <S.Content>
                 <S.Instructor>
-                    {instructor} | {date}
+                    {instructor} | {date} | {viewCount}회
                 </S.Instructor>
                 <S.Title>{title}</S.Title>
                 <S.Description>{description}</S.Description>

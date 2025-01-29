@@ -5,7 +5,6 @@ import Help from '../pages/help/Help';
 import Live from '../pages/live/Live';
 import MyPage from '../pages/myPage/MyPage';
 import Payment from '../pages/payment/Payment';
-import Search from '../pages/search/Search';
 import SignIn from '../pages/signIn/SignIn';
 import SignUp from '../pages/signUp/SignUp';
 import VideoUpload from '../pages/videoUpload/VideoUpload';
@@ -17,13 +16,22 @@ import Address from '../pages/payment/address/Address';
 import Info from '../pages/payment/info/Info';
 import Transaction from '../pages/payment/transaction/Transaction';
 import Cart from '../pages/payment/cart/Cart';
-import Profile from '../pages/myPage/_component/profile/Profile';
 import MyVideoManage from '../pages/MyVideoManage/MyVideoManage';
+import Profile from '../pages/myPage/_component/profile/Profile';
 import My from '../pages/myPage/_component/my/My';
 import UpdateProgileImg from '../pages/myPage/_component/updateProfileImg/UpdateProfileImg';
 import Update from '../pages/myPage/_component/update/Update';
 import UpdatePassword from '../pages/myPage/_component/updatePassword/UpdatePassword';
 import Certify from '../pages/myPage/_component/certify/Certify';
+import ProMyVideoList from '../pages/myPage/_component/videoList/ProMyVideoList';
+import NorMyVideoList from '../pages/myPage/_component/videoList/NorMyVideoList';
+import LiveVideoList from '../pages/myPage/_component/videoList/LiveVideoList';
+import QnAList from '../pages/myPage/_component/oftenQnA/QnAList';
+import Write from '../pages/myPage/_component/oftenQnA/Write';
+import Detail from '../pages/payment/Detail/Detail';
+import Success from '../pages/payment/Success/Success';
+import Failed from '../pages/payment/Failed/Failed';
+
 
 
 const router = createBrowserRouter([
@@ -67,7 +75,7 @@ const router = createBrowserRouter([
         element : <MyPage />,
         children : [
           {
-            path : 'my',
+            index : true,
             element : <My />,
           },
           {
@@ -90,23 +98,36 @@ const router = createBrowserRouter([
             path : 'certify',
             element : <Certify />,
           },
-          // {
-          //   // 자식 요소 예) http://localhost:3000/help/1:1문의
-          //   path : 'individualquestion',
-          //   element : <IndividualQuestion />,
-          // },
-          // {
-          //   // 자식 요소 예) http://localhost:3000/help/공지사항
-          //   path : 'notice',
-          //   element : <Notice />,
-          // },
+          {
+            path : 'pro-videolist',
+            element : <ProMyVideoList />,
+          },
+          {
+            path : 'videolist',
+            element : <NorMyVideoList />,
+          },
+          {
+            path : 'livelist',
+            element : <LiveVideoList />,
+          },
+          {
+            path : 'qnalist',
+            element : <QnAList />,
+          },
+          {
+            path: 'qnalist/write',
+            element: <Write />,
+          },
         ]
-        
       },
       {
         path : '/payment',
         element : <Payment />,
         children : [
+          {
+            index : true,
+            element : <Detail />
+          },
           {
             path : 'address',
             element : <Address />,
@@ -123,11 +144,23 @@ const router = createBrowserRouter([
             path : 'info',
             element : <Info />,
           },
+          {
+            path : 'success',
+            element : <Success />
+          },
+          {
+            path : 'failed',
+            element : <Failed />
+          },
         ]
       },
       {
-        path : '/search',
-        element : <Search />
+        // path : '/search',
+        // element : <Search />
+      },
+      {
+        // path : '/search/:title',
+        // element : <SearchRead />
       },
       {
         path : '/signin',

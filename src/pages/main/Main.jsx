@@ -38,7 +38,9 @@ const Main = () => {
   }
 
   if (error) {
-    return <div>Error: {error}</div>; // 오류 발생 시 표시
+    return <Link to={'/videoupload'}>
+      <div>Error: {error}</div>
+    </Link>; // 오류 발생 시 표시
   }
 
   // 동영상 카드 클릭 시 navigate로 데이터 전달
@@ -59,7 +61,7 @@ const Main = () => {
       <Link to={'/live'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>라이브</BasicButton>
       </Link>
-      <Link to={'/mypage/profile'}>
+      <Link to={'/mypage/my'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>마이페이지</BasicButton>
       </Link>
       <Link to={'/payment/cart'}>
@@ -70,11 +72,12 @@ const Main = () => {
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>영상</BasicButton>
       </Link>
       <div style={{ margin: 10 }}></div>
-      <div style={{ display: 'flex', gap: 39 }}>
+      <div style={{ display: 'flex', gap: 39 } }>
         {videos.map((video) => (
-          <div key={video.uuid} style={{cursor:"pointer"}} onClick={() => handleCardClick(video) }>
+          <div key={video._id} style={{cursor:"pointer"}} onClick={() => handleCardClick(video) }>
             <MediaCard
-              uuid={video.uuid}
+              key={video._id}
+              videoId={video._id}
               title={video.title}
               nickname={video.nickname}
               viewCount={video.viewCount}

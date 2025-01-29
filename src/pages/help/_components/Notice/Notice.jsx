@@ -23,7 +23,6 @@ const Notice = () => {
                 {isVisible && (
                     <S.Notice>
                         <S.Topic>
-                            <BasicCheckBox />
                             <S.h4>공지사항 :</S.h4>
                         </S.Topic>
                         <S.NoticeBox>
