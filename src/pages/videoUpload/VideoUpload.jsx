@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import LiveComponent1 from "./_component/VideoComponent1/LiveComponent1";
-import LiveComponent2 from "./_component/VideoComponent2/LiveComponent2";
 import UploadComponent1 from "./_component/UploadVideoPage1/UploadComponent1";
 import UploadComponent2 from "./_component/UploadVideoPage2/UploadComponent2";
 // Livecomponent1과 Livecomponent를 연결 및 props 전달
@@ -11,6 +9,7 @@ const VideoUpload = () => {
     description: "", // 스트림 유형
     thumbnail: "", // 썸네일 이미지
     visibility: "public", // 공개 상태
+    tags: [],
   }); // 두 페이지에서 받은 데이터를 모을 객체
 
   // LiveComponent1에서 입력받은 데이터 저장
@@ -21,14 +20,18 @@ const VideoUpload = () => {
       description: data.description,
       thumbnail: data.thumbnail,
     }));
+    console.log(streamData);
   };
 
   // LiveComponent2에서 입력받은 데이터 저장
   const handleComponent2Data = (data) => {
+    console.log("data",data)
     setStreamData((prevData) => ({
       ...prevData,
       visibility: data.visibility,
+      tags: data.tags
     }));
+    console.log(streamData)
   };
 
   // 다음 모달로 전환
@@ -43,16 +46,17 @@ const VideoUpload = () => {
       {currentStep === 1 && (
         <UploadComponent1
           onNext={goToNextStep}
-          onData={handleComponent1Data}
+          handleComponent1Data={handleComponent1Data}
           title={streamData.title} // 제목을 전달
-          description={streamData.description} // 제목을 전달
+          description={streamData.description} // 설명을 전달
         />
       )}
       {currentStep === 2 && (
         <UploadComponent2
           onPrev={goToPreviousStep}
-          onData={handleComponent2Data}
-          onSubmit={() => console.log(streamData)}
+          handleComponent2Data={handleComponent2Data}
+          Prevtags={streamData.tags}
+          Prevvisibility={streamData.visibility}
         />
       )}
     </div>

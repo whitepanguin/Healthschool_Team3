@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import S from "./style";
 import BasicRadio from "../../../../components/radio/BasicRadio";
+import TagSettings from "./TagSettings";
 // 라이브 페이지 2번째 페이지 팝업
 const StreamSettings = ({ visibility, handleVisibilityChange }) => {
   return (
@@ -26,22 +27,23 @@ const StreamSettings = ({ visibility, handleVisibilityChange }) => {
   );
 };
 
-const UploadComponent2 = ({ onPrev, onData, onSubmit, }) => {
+
+
+const UploadVideoPage2 = ({ onPrev, handleComponent2Data, Prevtags, Prevvisibility }) => {
   const [isModalOpen, setIsModalOpen] = useState(true); // 모달 표시 여부 상태
   const [visibility, setVisibility] = useState("public"); // 기본값: 'public'
-
+  const [tags, setTags] = useState([]);
+  
   const closeLiveModal = () => {
     setIsModalOpen(false);
   };
-
   const handleVisibilityChange = (event) => {
     setVisibility(event.target.value); // visibility 값 변경
   };
 
   // 완료 버튼 클릭 시, streamData 업데이트 후 상위 컴포넌트로 데이터 전달
   const handleSubmit = () => {
-    onData({ visibility }); // `visibility`만 상위 컴포넌트로 전달
-    onSubmit(); // 백엔드로 데이터 전송
+    handleComponent2Data({ visibility, tags }); // `visibility`만 상위 컴포넌트로 전달
   };
 
   return (
@@ -50,7 +52,7 @@ const UploadComponent2 = ({ onPrev, onData, onSubmit, }) => {
         <S.ModalWrapper>
           <S.ModalContent>
             <S.TitleWrapper>
-              <S.TitleDiv>동영상 업로드</S.TitleDiv>
+              <S.TitleDiv>라이브 스트림 생성</S.TitleDiv>
               <S.xImg
                 src={process.env.PUBLIC_URL + "/images/live/XVector.png"}
                 alt="X"
@@ -60,12 +62,20 @@ const UploadComponent2 = ({ onPrev, onData, onSubmit, }) => {
             <hr />
             <S.Information>공개 상태</S.Information>
             <S.SelectUserText>
-              동영상을 볼 수 있는 사용자를 선택하세요
+              라이브 스트리밍을 볼 수 있는 사용자를 선택하세요
             </S.SelectUserText>
 
             <StreamSettings
               visibility={visibility}
               handleVisibilityChange={handleVisibilityChange}
+            />
+            <S.Information>태그 설정</S.Information>
+            <S.SelectUserText>
+              업로드할 동영상의 태그를 설정하세요
+            </S.SelectUserText>
+            <TagSettings
+              tags={tags}
+              setTags={setTags}
             />
 
             <S.ButtonWrapper>
@@ -79,4 +89,4 @@ const UploadComponent2 = ({ onPrev, onData, onSubmit, }) => {
   );
 };
 
-export default UploadComponent2;
+export default UploadVideoPage2;

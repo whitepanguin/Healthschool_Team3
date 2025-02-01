@@ -3,7 +3,7 @@ import S from './style';
 import StreamBox from '../StreamBoxComponent/StreamBox';
 
 // 라이브 페이지 첫번째 페이지 팝업
-const UploadComponent1 = ({ onNext, onData, title, description }) => {
+const UploadComponent1 = ({ onNext, handleComponent1Data, title, description }) => {
   const PostImg = process.env.PUBLIC_URL + "/images/live/PostImg.png";
   const [thumbnail, setThumbnail] = useState(PostImg);
   const [isCustomImage, setIsCustomImage] = useState(false);
@@ -35,7 +35,7 @@ const UploadComponent1 = ({ onNext, onData, title, description }) => {
       alert("제목은 반드시 입력해야 합니다");
       return; // 제목이 비어있다면 다음 단계로 넘어가지 않음
     }
-    onData({
+    handleComponent1Data({
       title: titleValue,
       description: DescriptionValue,
       thumbnail

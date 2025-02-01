@@ -153,4 +153,38 @@ S.RadioDiv = styled.div`
   margin-left: 37px;
   margin-bottom: 18px;
 `
+S.TagInput = styled.input`
+  color: black;
+  width: 400px;
+`
+S.TagWrapper = styled.div`
+  margin-top: 25px;
+  width: 640px;
+  height: 170px;
+  border: 1px solid #fff;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* gap: 18px; */
+  padding: 24px;
+`
+S.TagButton = styled.button`
+  background-color: #ff4d61;
+  color: #fff;
+`
+S.TagItem = styled.span`
+  display: inline-block;
+  background: #fff;
+  color: #333;
+  padding: 4px 8px;
+  margin-right: 8px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  font-size: 14px;
+`;
+S.CancelButton = styled.button`
+  background-color: #fff;
+  color: #333;
+`
 export default S;

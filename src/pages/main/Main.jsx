@@ -38,9 +38,7 @@ const Main = () => {
   }
 
   if (error) {
-    return <Link to={'/videoupload'}>
-      <div>Error: {error}</div>
-    </Link>; // 오류 발생 시 표시
+    return <div>Error: {error}</div> // 오류 발생 시 표시
   }
 
   // 동영상 카드 클릭 시 navigate로 데이터 전달
