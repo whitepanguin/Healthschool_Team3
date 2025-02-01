@@ -68,6 +68,13 @@ const Main = () => {
       <Link to={'/payment/history'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>tosstest</BasicButton>
       </Link>
+      {currentUser.email === "admintest@admin.com" && (
+        <Link to={'/admin'}>
+          <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>
+            admintest
+          </BasicButton>
+        </Link>
+      )}
 
       <div style={{ margin: 10 }}></div>
       <div style={{ display: 'grid', gridTemplateColumns : ' 1fr 1fr 1fr 1fr', gap : '30px'} }>

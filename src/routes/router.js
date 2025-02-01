@@ -32,6 +32,7 @@ import Success from '../pages/payment/Success/Success';
 import Failed from '../pages/payment/Failed/Failed';
 import NoticesPage from '../pages/help/_components/Notice/_componentsPages/NoticesPage';
 import History from '../pages/payment/history/History';
+import Admin from '../pages/admin/Admin';
 
 
 
@@ -186,7 +187,12 @@ const router = createBrowserRouter([
       {
         path : '/myVideoManage/:id',
         element : <MyVideoManage/>
-      }
+      },
+      {
+        path : '/admin',
+        element : <Admin/>
+      },
+
     ]
   }
 ],
