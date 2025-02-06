@@ -71,6 +71,15 @@ const Main = () => {
       <Link to={'/videoupload'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>비디오 업로드</BasicButton>
       </Link>
+
+      {currentUser.email === "admintest@admin.com" && (
+        <Link to={'/admin'}>
+          <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>
+            admintest
+          </BasicButton>
+        </Link>
+      )}
+
       <div style={{ margin: 10 }}></div>
       <div style={{ display: 'grid', gridTemplateColumns : ' 1fr 1fr 1fr 1fr', gap : '30px'} }>
         {videos.map((video) => (
@@ -87,6 +96,7 @@ const Main = () => {
               imageUrl={video.imageUrl}
               tags={video.tags}
               description={video.description}
+              userProfile={video.userProfile}
             />
           </div>
         ))}

@@ -29,7 +29,7 @@ const StreamSettings = ({ visibility, handleVisibilityChange }) => {
 
 
 
-const UploadVideoPage2 = ({ onPrev, handleComponent2Data, Prevtags, Prevvisibility }) => {
+const UploadVideoPage2 = ({ onPrev, handleComponent2Data,onSubmit }) => {
   const [isModalOpen, setIsModalOpen] = useState(true); // 모달 표시 여부 상태
   const [visibility, setVisibility] = useState("public"); // 기본값: 'public'
   const [tags, setTags] = useState([]);
@@ -42,8 +42,9 @@ const UploadVideoPage2 = ({ onPrev, handleComponent2Data, Prevtags, Prevvisibili
   };
 
   // 완료 버튼 클릭 시, streamData 업데이트 후 상위 컴포넌트로 데이터 전달
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     handleComponent2Data({ visibility, tags }); // `visibility`만 상위 컴포넌트로 전달
+    onSubmit();
   };
 
   return (

@@ -123,6 +123,17 @@ S.ImgBackground = styled.div`
     align-items: center;
     cursor: pointer;
 `
+S.VideoBackground = styled.div`
+    height: 150px; 
+    width: 150px;
+    margin-top: 10px;
+    border-radius: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+`
 S.InputWrapper = styled.div`
     margin-bottom: 40px;
     margin-top: 10px;

@@ -2,13 +2,13 @@ import React from 'react';
 import S from './style';
 import BasicTag from '../tag/BasicTag';
 
-const MediaCard = ({ title, date, description,nickname,viewCount, likeCount,videoUrl, imageUrl, instructor, tags ,id }) => {
+const MediaCard = ({userProfile, title, date, description,nickname,viewCount, likeCount,videoUrl, imageUrl, instructor, tags ,id }) => {
     return (
         <S.CardContainer>
             <S.ImageWrapper>
                 <S.Image src={imageUrl} alt={title} />
                 <S.ProfileWrapper>
-                    <S.Profile src={imageUrl} alt={instructor} />
+                    <S.Profile src={userProfile} alt={instructor} />
                 </S.ProfileWrapper>
             </S.ImageWrapper>
             <S.Content>

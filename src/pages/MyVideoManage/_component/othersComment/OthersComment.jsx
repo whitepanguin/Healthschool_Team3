@@ -4,8 +4,10 @@ import DeleteModal from './DelteModal';
 import CommentComponent from '../commentComponent/CommnentComponent';
 import ReplyComment from './ReplayInput';
 import ReplyOthersComment from './ReplyOthersComment';
+import { useSelector } from 'react-redux';
 
-const OthersComment = ({parentId, personalImage, userId, upLoadTime, commentDetail, replyCommentCount, userEmail}) => {
+const OthersComment = ({setComments,videoId,parentId, personalImage, userId, upLoadTime, commentDetail, replyCommentCount, userEmail}) => {
+    const { currentUser, isLogin } = useSelector((state) => state.user); // user 상태 가져오기
     const [showModal, setShowModal] = useState(false);
     const [isReplying, setIsReplying] = useState(false);
     const [showReplies, setShowReplies] = useState(false);
@@ -44,10 +46,40 @@ const OthersComment = ({parentId, personalImage, userId, upLoadTime, commentDeta
         setShowModal(true);
     };
 
-    const handleConfirmDelete = (newReply) => {
-        console.log(`${userId}님의 댓글이 삭제되었습니다.`);
-        setShowModal(false);
-    };
+    const handleConfirmDelete = async () => {
+        if(currentUser.email !==userEmail){
+          alert("삭제할 권한이 없습니다. 자신이 작성한 댓글만 삭제할 수 있습니다.");
+          setShowModal(false);
+          return;
+        }
+        try {
+          setLoading(true);
+          const response = await fetch(`http://localhost:8000/videos/${videoId}/comments/${parentId}`, {
+            method: 'DELETE',
+            headers: { 
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: currentUser.email,
+            })
+          });
+    
+          if (!response.ok) {
+            throw new Error('댓글 삭제 실패');
+          }
+    
+          console.log(`${userId}님의 댓글이 삭제되었습니다.`);
+          // 댓글 삭제 후 화면에서 해당 댓글 제거
+          const data = await response.json();
+          console.log("data", data);
+          setComments(prevReplies => prevReplies.filter(reply => reply._id !== parentId)); // 삭제된 대댓글 제외
+          setShowModal(false); // 모달 닫기
+        } catch (error) {
+          console.error('댓글 삭제 에러:', error);
+        } finally {
+          setLoading(false);
+        }
+      };
 
    
     const handleCloseModal = () => {
