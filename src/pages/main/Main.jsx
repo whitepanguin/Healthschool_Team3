@@ -38,7 +38,7 @@ const Main = () => {
   }
 
   if (error) {
-    return <div>Error: {error}</div>; // 오류 발생 시 표시
+    return <div>Error: {error}</div> // 오류 발생 시 표시
   }
 
   // 동영상 카드 클릭 시 navigate로 데이터 전달
@@ -68,6 +68,10 @@ const Main = () => {
       <Link to={'/payment/history'}>
         <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>tosstest</BasicButton>
       </Link>
+      <Link to={'/videoupload'}>
+        <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>비디오 업로드</BasicButton>
+      </Link>
+
       {currentUser.email === "admintest@admin.com" && (
         <Link to={'/admin'}>
           <BasicButton size={'medium'} shape={'small'} variant={'primary'} color={'white'}>
@@ -92,6 +96,7 @@ const Main = () => {
               imageUrl={video.imageUrl}
               tags={video.tags}
               description={video.description}
+              userProfile={video.userProfile}
             />
           </div>
         ))}

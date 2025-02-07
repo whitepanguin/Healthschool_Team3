@@ -94,8 +94,27 @@ const MyVideoManage = () => {
           setVideoUrl(videoDataFromMediaCard.videoUrl); // videoUrl 설정
           setUploadDate(videoDataFromMediaCard.uploadDate); // 업로드 날짜 설정
         }
-        fetchComments();
-      }, [videoDataFromMediaCard]);
+        const incrementViewCount = async () => {
+          try {
+            const response = await fetch(`http://localhost:8000/videos/${videoId}`, {
+              method: 'GET', 
+            });
+            if (!response.ok) {
+              throw new Error("viewCount 증가 실패");
+            }
+            // 굳이 응답값을 setState로 쓸 필요 없다면 생략 가능합니다.
+            // const updatedVideo = await response.json();
+            // console.log("viewCount가 증가된 비디오:", updatedVideo);
+          } catch (err) {
+            console.error(err);
+            setError(err.message);
+          }
+        };
+        if(videoId){
+          incrementViewCount();
+          fetchComments();
+        }
+      }, [videoDataFromMediaCard,videoId]);
     
       if (!videoDataFromMediaCard) {
         return <div>에러: 동영상 데이터가 없습니다.</div>; // 데이터가 없을 경우 에러 표시
@@ -144,7 +163,7 @@ const MyVideoManage = () => {
             />
             <CommentComponent videoId={videoDataFromMediaCard._id} onAddComment={handleAddComment}/>
             <div style={{display:'flex', padding:'0 90px 0 0'}}>
-              <CompletSortComponent/>
+            <CompletSortComponent/>
             </div>
             
             <div style={{display:"flex", flexDirection:'column', gap:'50px'}}>
@@ -158,6 +177,8 @@ const MyVideoManage = () => {
                     upLoadTime={new Date(comment.uploadDate).toLocaleDateString("ko-KR")} // 댓글 업로드 날짜
                     commentDetail={comment.content} // 댓글 내용
                     replyCommentCount={comment.replyCount || 0} // 대댓글 개수
+                    videoId={comment.videoId}
+                    setComments={setComments}
                   />
                 ))}
             </div>
