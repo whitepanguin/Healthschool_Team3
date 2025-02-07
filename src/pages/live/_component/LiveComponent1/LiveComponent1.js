@@ -14,16 +14,28 @@ const LiveComponent1 = ({ onNext, onData, title }) => {
 
   // 썸네일 파일 처리
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setThumbnail(reader.result);
-        setIsCustomImage(true);
-      };
-      reader.readAsDataURL(file);
-    }
+  const file = event.target.files[0];
+  if (!file) {
+    console.log("파일이 선택되지 않았습니다.");
+    return;
+  }
+
+  console.log("파일이 선택되었습니다:", file);
+
+  const reader = new FileReader();
+  reader.onloadend = () => {
+    console.log("파일이 정상적으로 로드되었습니다.");
+    console.log("reader.result:", reader.result);
+    setThumbnail(reader.result);
+    setIsCustomImage(true);
   };
+
+  reader.onerror = (error) => {
+    console.error("파일을 읽는 중 오류 발생:", error);
+  };
+
+  reader.readAsDataURL(file);
+};
 
   const closeLiveModal = () => {
     setIsModalOpen(false); // 모달 닫기

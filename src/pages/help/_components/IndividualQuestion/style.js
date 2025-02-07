@@ -8,12 +8,11 @@ S.Header = styled.header`
     flex-direction : column;
     align-items: center;
     margin-bottom : 50px
-
 `
 
 
 S.Main = styled.main`
-    width: 100%;
+    width: 60%;
     height: 60%;
 `
 
@@ -96,28 +95,49 @@ S.SubmitBtn = styled.button`
     font-size : 24px;
 `
 
-
-S.ViewDetails = styled.h3`
-    width: 100px;
-    height: 30px;
+S.Wrap = styled.div`
+    background-color: #222;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #3D6AFF;
-    box-shadow: 2px 2px 2px rgba(225, 225, 225, 0.7);
-    border-radius: 8px ;
-  &:hover{
-   background-color: blue;
-   cursor: pointer;
-  }
 `
 
 
-S.ContentBox = styled.div`
-  width: 100%;
-  height: 50px;
-  border: 1px solid #fff;
-  margin-bottom : 10px;
+S.Navber = styled.div`
+    width: 40%;
+    height: 60%;
+`
+
+S.NavList = styled.div`
+    width: 100%;
+    height: 500px;
+    border: 1px solid #fff;
+    overflow-y: scroll;
+
+`
+
+S.NavberTitle = styled.h1`
+    text-align: center;
+    font-size: 32px;
+    margin: 10px;
+`
+S.Content = styled.div`
+    padding: 5px;
+`
+
+S.List = styled.div`
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    margin: 10px 0 10px 0;
+    background-color: #ccc;
+`
+
+S.ContentNone = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
 `
 
 export default S ;

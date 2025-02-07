@@ -46,9 +46,6 @@ const TitleBox = () => {
 
       };
 
-
-
-    console.log(currentUser)
     return (
         <S.Wrap>
                 <S.TitleInputBox 

@@ -51,30 +51,34 @@ const IndividualQuestion = () => {
                 <S.h4>어떠한 내용이라도 답변드릴 준비가 되어 있습니다!</S.h4>
                 <S.h4>문의를 보내주세요! 가능한 한 빨리 답변 드리도록 하겠습니다.</S.h4>
             </S.Header>
-            <S.ViewDetails onClick={handleClick}>상세보기</S.ViewDetails>
             <hr />
-            {isVisible && (
-                <div id="Questions">
-                    {postChats.length > 0 ? (
-                        postChats.map((postChat) => (
-                            <div key={postChat._id}>
-                                <h4>Title: {postChat.title}</h4>
-                                <p>Content: {postChat.content}</p>
-                            </div>
-                        ))
-                    ) : (
-                        <p>문의 내용이 없습니다.</p>
-                    )}
-                </div>
-            )}
-            <S.Main>
-                <S.Account>
-                    <TitleBox />
-                </S.Account>
-            </S.Main>
+            <S.Wrap>
+                <S.Main>
+                    <S.Account>
+                        <TitleBox />
+                    </S.Account>
+                </S.Main>
+                <S.Navber>
+                    <S.NavberTitle>문의 목록</S.NavberTitle>
+                    <S.NavList>
+                        {postChats.length > 0 ? (
+                            postChats.map((postChat) => (
+                                <S.List  key={postChat._id}>
+                                    <h4>Title: {postChat.title}</h4>
+                                    {/*<p>Content: {postChat.content}</p>*/}
+                                </S.List>
+                            ))
+                        ) : (
+                            <S.ContentNone>문의 내용이 없습니다.</S.ContentNone>
+                        )}
+                    </S.NavList>
+                </S.Navber>
+            </S.Wrap>
             <Outlet />
         </div>
     );
 };
 
 export default IndividualQuestion;
+
+
