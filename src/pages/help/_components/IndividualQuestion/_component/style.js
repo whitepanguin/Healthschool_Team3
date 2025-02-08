@@ -20,12 +20,12 @@ S.form = styled.form`
 `
 
 S.TitleInputBox = styled.input`
-    width: 60%;
+    width: 90%;
     height: 50px;
     color: #000;
 `
 S.ContentBox = styled.input`
-   width: 60%;
+   width: 90%;
    height: 40%;
    line-height: 40%;
    color: #000;
