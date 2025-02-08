@@ -37,6 +37,13 @@ const IndividualQuestion = () => {
         getPostChat();  // 컴포넌트가 처음 렌더링될 때 호출
     }, [currentUser.email]);  // currentUser.email이 변경될 때마다 호출
 
+
+    const [isVisible, setIsVisible] = useState(false);
+
+    const handleClick = () => {
+        setIsVisible(!isVisible); // isVisible 값 반전 (true면 false, false면 true)
+    };
+
     return (
         <div>
             <S.Header>
@@ -44,28 +51,34 @@ const IndividualQuestion = () => {
                 <S.h4>어떠한 내용이라도 답변드릴 준비가 되어 있습니다!</S.h4>
                 <S.h4>문의를 보내주세요! 가능한 한 빨리 답변 드리도록 하겠습니다.</S.h4>
             </S.Header>
-            <h3>상세보기</h3>
             <hr />
-            <div id="Questions">
-                {postChats.length > 0 ? (
-                    postChats.map((postChat) => (
-                        <div key={postChat._id}>
-                            <h4>Title: {postChat.title}</h4>
-                            <p>Content: {postChat.content}</p>
-                        </div>
-                    ))
-                ) : (
-                    <p>문의 내용이 없습니다.</p> // 데이터를 받지 못했을 때 표시
-                )}
-            </div>
-            <S.Main>
-                <S.Account>
-                    <TitleBox />
-                </S.Account>
-            </S.Main>
+            <S.Wrap>
+                <S.Main>
+                    <S.Account>
+                        <TitleBox />
+                    </S.Account>
+                </S.Main>
+                <S.Navber>
+                    <S.NavberTitle>문의 목록</S.NavberTitle>
+                    <S.NavList>
+                        {postChats.length > 0 ? (
+                            postChats.map((postChat) => (
+                                <S.List  key={postChat._id}>
+                                    <h4>Title: {postChat.title}</h4>
+                                    {/*<p>Content: {postChat.content}</p>*/}
+                                </S.List>
+                            ))
+                        ) : (
+                            <S.ContentNone>문의 내용이 없습니다.</S.ContentNone>
+                        )}
+                    </S.NavList>
+                </S.Navber>
+            </S.Wrap>
             <Outlet />
         </div>
     );
 };
 
 export default IndividualQuestion;
+
+
