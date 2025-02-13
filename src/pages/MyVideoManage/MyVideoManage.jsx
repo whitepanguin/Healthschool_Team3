@@ -152,7 +152,7 @@ const MyVideoManage = () => {
                 </S.VideoListWrapper>
             </div>
             <VideoInform
-                userImage={videoDataFromMediaCard.imageUrl}
+                userImage={videoDataFromMediaCard.userProfile}
                 userId={videoDataFromMediaCard.email}
                 subscribeNum={videoDataFromMediaCard.likeCount}
                 userName={videoDataFromMediaCard.nickname}

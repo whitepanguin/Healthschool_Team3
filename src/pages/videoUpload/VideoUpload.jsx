@@ -28,6 +28,8 @@ const VideoUpload = () => {
 
   // 두 번째 단계에서 받은 데이터 저장
   const handleComponent2Data = (data) => {
+    console.log("visibility",data.visibility)
+    console.log("tags",data.tags)
     setStreamData((prevData) => ({
       ...prevData,
       visibility: data.visibility,
