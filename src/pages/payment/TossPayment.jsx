@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { loadTossPayments, ANONYMOUS } from "@tosspayments/tosspayments-sdk";
 import S from "./style";
+import { useNavigate } from "react-router-dom";
 
 const generateRandomString = () => window.btoa(Math.random()).slice(0, 20);
 const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
@@ -10,6 +11,7 @@ const TossPayment = ({...rest}) => {
   const { productPrice, orderName, customerName, customerEmail } = rest;
   const [ready, setReady] = useState(false);
   const [widgets, setWidgets] = useState(null);
+  const navigate = useNavigate();
 
   // 상품 가격
   const [amount, setAmount] = useState({
@@ -87,7 +89,7 @@ const TossPayment = ({...rest}) => {
                   failUrl: window.location.origin + "/payment/fail"
                 });
               } catch (error) {
-                // TODO: 에러 처리
+                
               }
             }}
           >

@@ -5,7 +5,7 @@ import DaumPostcode from "react-daum-postcode";
 import BasicButton from "../../../components/button/BasicButton";
 import BasicCheckBox from "../../../components/checkbox/BasicCheckBox";
 import { useDispatch, useSelector } from "react-redux";
-
+import PaymentButton from '../PaymentButton/PaymentButton';
 
 const Address = () => {
   const { isLogin, currentUser } = useSelector((state) => state.user);
@@ -56,9 +56,8 @@ const Address = () => {
     if (storedOption) {
       setSelectedOptions(JSON.parse(storedOption));
     }
-    
+  
   }, []);
-
   // useEffect(() => {
   //   const fetchSelectedStores = async () => {
   //     const selectedIds = JSON.parse(localStorage.getItem("storedData"));
@@ -316,16 +315,21 @@ const Address = () => {
           다 음
         </BasicButton>
         </S.buttonNext>
-
-        <BasicButton
+ 
+        <PaymentButton
+          productPrice={totalAmount}
+          orderName={"title"}
+          customerName={name}
+          customerEmail={email}
+        >
+          결 제 
+        </PaymentButton>
+        <button 
           size={"medium"}
           shape={"small"}
           variant={"primary"}
           color={"white"}
-          onClick={submitData}
-        >
-          결 제 
-        </BasicButton>
+        onClick={submitData}>확인</button>
 
     </div>
   );

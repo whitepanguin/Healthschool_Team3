@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import TossPayment from '../TossPayment';
+import Button from './style';
+
 
 
 const PaymentButton = ({...rest}) => {
@@ -11,7 +13,12 @@ const PaymentButton = ({...rest}) => {
   return (
     <div>
       { isTossPayment && <TossPayment {...rest} /> }
-      <button onClick={toggleTossPayment}>결제하기</button>
+      <Button 
+      variant={"primary"} 
+      shape={"big"}
+      size={"medium"}
+      border={"primary"}
+      onClick={toggleTossPayment}>결 제</Button>
     </div>
   );
 };
